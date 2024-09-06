@@ -6,7 +6,7 @@
 
 ***
 
-### Features
+## Features
 
 - Read and write MIDI files
 - Manipulate MIDI data
@@ -14,10 +14,22 @@
 
 ***
 
-### Installation
+## Installation
+
+***
+
+### CPU
 
 ```sh
 pip install tegridymidi
+```
+
+***
+
+### GPU
+
+```sh
+pip install tegridymidi[cuda]
 ```
 
 ***
