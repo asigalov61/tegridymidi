@@ -1,6 +1,10 @@
 # Tegridy MIDI
 
-## Tegridy MIDI is a Python package for working with MIDI files. It provides tools for reading, writing, and manipulating MIDI data
+## Tools for reading, writing, and manipulating MIDIs
+
+![Tegridy MIDI Logo](https://github.com/user-attachments/assets/6b1f98e1-255c-4e76-ba24-46f37ad36b46)
+
+***
 
 ### Features
 
@@ -8,8 +12,15 @@
 - Manipulate MIDI data
 - Integrate with FluidSynth for MIDI playback
 
+***
+
 ### Installation
 
 ```sh
 pip install tegridymidi
 ```
+
+***
+
+### Project Los Angeles
+### Tegridy Code 2024
