@@ -2,7 +2,7 @@
 #
 # Tegridy MIDI Python Module
 #
-# Version 0.2
+# Version 24.9.6
 #
 # Project Los Angeles
 # Tegridy Code 2024
