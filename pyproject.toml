@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tegridymidi"
+version = "0.1.0"
+description = "Tegridy MIDI"
+authors = [
+    { name = "Alex Lev", email = "alexlev61@proton.me" }
+]
+dependencies = [
+    # List your dependencies here
+]
