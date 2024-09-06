@@ -7,6 +7,7 @@
 #=======================================================================================================
 
 from .tegridymidi import *
+from .helpers import *
 from .melodies import *
 from .chords import *
 from .constants import *
