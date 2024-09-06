@@ -12,3 +12,8 @@ authors = [
 dependencies = [
     # List your dependencies here
 ]
+dynamic = ["readme"]
+
+[project.readme]
+file = "README.md"
+content-type = "text/markdown"
