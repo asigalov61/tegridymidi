@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "tegridymidi"
-version = "0.2.0"
+version = "0.2.1"
 description = "Tegridy MIDI"
 authors = [
     { name = "Alex Lev", email = "alexlev61@proton.me" }
