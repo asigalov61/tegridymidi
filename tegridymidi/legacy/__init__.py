@@ -2,9 +2,10 @@
 # Tegridy MIDI Legacy __init__ module
 #=======================================================================================================
 
-from .TMIDIX import *
-from .TMELODIES import *
-from .PLOTS import *
+from . import TMIDIX
+from . import TMELODIES
+from . import TPLOTS
+from . import MIDI
 
 #=======================================================================================================
 
