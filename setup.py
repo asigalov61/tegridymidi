@@ -36,4 +36,5 @@ setup(
             'cupy-cuda12x',
             'torch-summary',
         ],
+    }
 )
