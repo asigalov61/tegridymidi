@@ -22,3 +22,5 @@ def list_sample_midis_with_full_paths():
     """
     sample_midis_path = get_sample_midis_path()
     return [os.path.join(sample_midis_path, file) for file in os.listdir(sample_midis_path)]
+
+__all__ = [name for name in globals() if not name.startswith('_')]
