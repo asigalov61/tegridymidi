@@ -18,6 +18,8 @@ dependencies = [
     "scikit-learn",
 ]
 
+keywords = ["MIDI", "tegridy", "tools"]
+
 [project.optional-dependencies]
 cuda = [
     "einops",
