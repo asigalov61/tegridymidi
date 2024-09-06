@@ -37,4 +37,5 @@ setup(
             'torch-summary',
         ],
     }
+    keywords=['MIDI', 'tegridy', 'tools'],
 )
