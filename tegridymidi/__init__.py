@@ -1,4 +1,6 @@
 from .tegridymidi import *
+from .melodies import *
+from .chords import *
 from .constants import *
 from .matrixes import *
 from .plots import *
