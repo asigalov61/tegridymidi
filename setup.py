@@ -20,6 +20,7 @@ setup(
     include_package_data=True,
     package_data={
         'tegridymidi': ['sample_midis/*'],
+    },
     install_requires=[
         # List your dependencies here
     ],
