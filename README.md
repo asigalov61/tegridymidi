@@ -18,15 +18,11 @@
 
 ## Installation
 
-***
-
 ### CPU
 
 ```sh
 pip install tegridymidi
 ```
-
-***
 
 ### GPU
 
