@@ -8,6 +8,7 @@
 
 from .tegridymidi import *
 from .helpers import *
+from .processors import *
 from .melodies import *
 from .chords import *
 from .constants import *
