@@ -2,6 +2,10 @@
 # Tegridy MIDI __init__ module
 #=======================================================================================================
 
+#=======================================================================================================
+# CPU Imports
+#=======================================================================================================
+
 from .tegridymidi import *
 from .melodies import *
 from .chords import *
@@ -14,17 +18,21 @@ from .midi_to_colab_audio import *
 from .files_helpers import *
 from .sample_midis_helpers import *
 
+#=======================================================================================================
+# GPU Imports
+#=======================================================================================================
+
 try:
   
-    import torch
+  import torch
   
-    if torch.cuda.is_available():
-      
-      from .x_transformer_1_23_2e import *
-      import random
+  if torch.cuda.is_available():
+    
+    from .x_transformer_1_23_2e import *
+    import random
       
 except ImportError:
-    pass
+  pass
 
 #=======================================================================================================
 # This is the end of __init__ module
