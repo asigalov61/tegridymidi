@@ -4,13 +4,26 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "tegridymidi"
-version = "0.2.1"
-description = "Tegridy MIDI"
+version = "0.2.2"
+description = "Tools for reading, writing, and manipulating MIDIs"
 authors = [
     { name = "Alex Lev", email = "alexlev61@proton.me" }
 ]
 dependencies = [
-    # List your dependencies here
+    "tqdm",
+    "numpy",
+    "matplotlib",
+    "scipy",
+    "networkx",
+    "scikit-learn",
+]
+
+[project.optional-dependencies]
+cuda = [
+    "einops",
+    "torch",
+    "cupy-cuda12x",
+    "torch-summary",
 ]
 
 [project.readme]
