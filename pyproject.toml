@@ -39,8 +39,8 @@ license = { text = "Apache Software License 2.0" }  # Specify the license
 
 [project.optional-dependencies]
 cuda = [
+    'torch',
     "einops",
-    "torch",
     "cupy-cuda12x",
     "torch-summary",
 ]
