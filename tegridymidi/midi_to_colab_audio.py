@@ -3086,5 +3086,7 @@ def midi_to_colab_audio(midi_file,
   
     else:
       return None
+
+__all__ = [name for name in globals() if not name.startswith('_')]
     
 #===================================================================================================================
