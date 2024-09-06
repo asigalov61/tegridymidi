@@ -185,3 +185,6 @@ def HaystackSearch(needle, haystack):
 		else:
 			return i - n + 1
 	return -1
+
+
+__all__ = [name for name in globals() if not name.startswith('_')]
