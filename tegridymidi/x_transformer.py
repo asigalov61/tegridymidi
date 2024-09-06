@@ -4,7 +4,7 @@
 #
 # Partial x-transformers code With useful modifications
 #
-# Version 1.0
+# Version 1.23.2
 #
 # Original source code courtesy of lucidrains
 # https://github.com/lucidrains/x-transformers
