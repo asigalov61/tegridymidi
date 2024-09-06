@@ -22,6 +22,11 @@ setup(
         'tegridymidi': ['sample_midis/*'],
     },
     install_requires=[
-        # List your dependencies here
+        'tqdm',
+        'numpy',
+        'matplotlib',
+        'scipy',
+        'networkx',
+        'scikit-learn',
     ],
 )
