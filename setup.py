@@ -17,6 +17,9 @@ setup(
     author="Alex Lev",
     author_email="alexlev61@proton.me",
     packages=find_packages(),  # Automatically find and include all packages
+    include_package_data=True,
+    package_data={
+        'tegridymidi': ['sample_midis/*'],
     install_requires=[
         # List your dependencies here
     ],
