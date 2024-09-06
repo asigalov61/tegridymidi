@@ -1,0 +1,10 @@
+tqdm
+numpy
+matplotlib
+scipy
+networkx
+scikit-learn
+torch; extra == "cuda"
+einops; extra == "cuda"
+cupy-cuda12x; extra == "cuda"
+torch-summary; extra == "cuda"
