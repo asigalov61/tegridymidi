@@ -924,6 +924,10 @@ def reverse_melody(melody, full_reverse=True):
       note[2] = mel_pitches[i]
 
     return melody[:4] + [mel[4]]
+
+################################################################################
+
+__all__ = [name for name in globals() if not name.startswith('_')]
     
 ################################################################################
 #
