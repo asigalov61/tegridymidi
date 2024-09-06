@@ -29,7 +29,7 @@ try:
   
   if torch.cuda.is_available():
     
-    from .x_transformer_1_23_2e import *
+    from .x_transformer import *
     import random
       
 except ImportError:
