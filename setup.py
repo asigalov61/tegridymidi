@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 import os
 
 # Install fluidsynth using apt
@@ -10,7 +10,7 @@ setup(
     description="Tegridy MIDI",
     author="Alex Lev",
     author_email="alexlev61@proton.me",
-    packages=["tegridymidi"],
+    packages=find_packages(),
     install_requires=[
         # List your dependencies here
     ],
