@@ -36,6 +36,10 @@ def print_directory_tree(root_dir, exclude_hidden=True, output_file=None):
     else:
         for line in lines:
             print(line)
+
+#=======================================================================================================
+
+__all__ = [name for name in globals() if not name.startswith('_')]
           
 #=======================================================================================================
 # This is the end of files_helpers module
