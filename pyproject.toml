@@ -12,7 +12,6 @@ authors = [
 dependencies = [
     # List your dependencies here
 ]
-dynamic = ["readme"]
 
 [project.readme]
 file = "README.md"
