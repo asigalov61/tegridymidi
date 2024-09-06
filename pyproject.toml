@@ -21,6 +21,19 @@ dependencies = [
     "scikit-learn",
 ]
 keywords = ["MIDI", "tegridy", "tools"]  # Add your keywords here
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",  
+    "Operating System :: OS Independent",        
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12"
+]
 requires-python = ">=3.6"  # Specify the Python version
 license = { text = "Apache Software License 2.0" }  # Specify the license
 
@@ -42,17 +55,3 @@ Documentation = "https://github.com/asigalov61/tegridymidi/docs"
 Repository = "https://github.com/asigalov61/tegridymidi"
 Issues = "https://github.com/asigalov61/tegridymidi/issues"
 Discussions = "https://github.com/asigalov61/tegridymidi/discussions"
-
-classifiers = [
-    "Development Status :: 5 - Production/Stable",
-    "Intended Audience :: Science/Research",
-    "License :: OSI Approved :: Apache Software License",  
-    "Operating System :: OS Independent",        
-    "Programming Language :: Python :: 3.6",
-    "Programming Language :: Python :: 3.7",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12"
-]
