@@ -29,4 +29,11 @@ setup(
         'networkx',
         'scikit-learn',
     ],
+    extras_require={
+        'cuda': [
+            'einops',
+            'torch',
+            'cupy-cuda12x',
+            'torch-summary',
+        ],
 )
