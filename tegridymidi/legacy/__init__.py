@@ -5,7 +5,6 @@
 from .TMIDIX import *
 from .TMELODIES import *
 from .PLOTS import *
-from .MIDI import *
 
 __all__ = [name for name in globals() if not name.startswith('_')]
 
