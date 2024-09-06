@@ -7,7 +7,10 @@ name = "tegridymidi"
 version = "0.2.2"
 description = "Tools for reading, writing, and manipulating MIDIs"
 authors = [
-    { name = "Alex Lev", email = "alexlev61@proton.me" }
+    {name = "Alex Lev", email = "alexlev61@proton.me"}
+]
+maintainers = [
+  {name = "Alex Lev", email = "alexlev61@proton.me"}
 ]
 dependencies = [
     "tqdm",
@@ -34,12 +37,12 @@ file = "README.md"
 content-type = "text/markdown"
 
 [project.urls]
-homepage = "https://github.com/asigalov61/tegridymidi"
-documentation = "https://github.com/asigalov61/tegridymidi/wiki"
-repository = "https://github.com/asigalov61/tegridymidi"
-bug-tracker = "https://github.com/asigalov61/tegridymidi/issues"
+Homepage = "https://github.com/asigalov61/tegridymidi"
+Documentation = "https://github.com/asigalov61/tegridymidi/docs"
+Repository = "https://github.com/asigalov61/tegridymidi"
+Issues = "https://github.com/asigalov61/tegridymidi/issues"
+Discussions = "https://github.com/asigalov61/tegridymidi/discussions"
 
-[project.classifiers]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Science/Research",
