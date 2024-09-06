@@ -1730,3 +1730,6 @@ def _encode(events_lol, unknown_callback=None, never_add_eot=False,
 
     return b''.join(data)
 
+
+__all__ = [name for name in globals() if not name.startswith('_')]
+
