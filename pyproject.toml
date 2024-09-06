@@ -17,8 +17,9 @@ dependencies = [
     "networkx",
     "scikit-learn",
 ]
-
-keywords = ["MIDI", "tegridy", "tools"]
+keywords = ["MIDI", "tegridy", "tools"]  # Add your keywords here
+requires-python = ">=3.6"  # Specify the Python version
+license = { text = "Apache Software License 2.0" }  # Specify the license
 
 [project.optional-dependencies]
 cuda = [
@@ -31,3 +32,24 @@ cuda = [
 [project.readme]
 file = "README.md"
 content-type = "text/markdown"
+
+[project.urls]
+homepage = "https://github.com/asigalov61/tegridymidi"
+documentation = "https://github.com/asigalov61/tegridymidi/wiki"
+repository = "https://github.com/asigalov61/tegridymidi"
+bug-tracker = "https://github.com/asigalov61/tegridymidi/issues"
+
+[project.classifiers]
+classifiers = [
+    'Development Status :: 5 - Production/Stable',
+    'Intended Audience :: Science/Research',
+    'License :: OSI Approved :: Apache Software License',  
+    'Operating System :: OS Independent',        
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12"
+]
