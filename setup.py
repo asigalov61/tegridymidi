@@ -37,8 +37,8 @@ setup(
     ],
     extras_require={
         'cuda': [
-            'einops',
             'torch',
+            'einops',
             'cupy-cuda12x',
             'torch-summary',
         ],
