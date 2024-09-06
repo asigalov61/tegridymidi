@@ -8871,6 +8871,10 @@ def escore_notes_to_parsons_code(escore_notes,
 def all_consequtive(list_of_values):
   return all(b > a for a, b in zip(list_of_values[:-1], list_of_values[1:]))
 
+###################################################################################
+
+__all__ = [name for name in globals() if not name.startswith('_')]
+
 ###################################################################################  
 #  
 # This is the end of the TMIDI X Python module
