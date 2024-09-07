@@ -1,4 +1,5 @@
 tqdm
+pillow
 numpy
 matplotlib
 scipy
