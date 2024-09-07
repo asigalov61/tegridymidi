@@ -10,7 +10,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="tegridymidi",
-    version="24.9.6",
+    version="24.9.7",
     description="Tools for reading, writing, and manipulating MIDIs",
     long_description=long_description,
     long_description_content_type="text/markdown",
