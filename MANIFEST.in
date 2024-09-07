@@ -1,3 +1,2 @@
 include README.md
 recursive-include tegridymidi/sample_midis *
-recursive-include docs *
