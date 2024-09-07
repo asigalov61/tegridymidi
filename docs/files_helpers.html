@@ -1,0 +1,2817 @@
+<!doctype html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+
+  
+  <title>tegridymidi.files_helpers API documentation</title>
+  <meta name="description" content="" />
+
+
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300' rel='stylesheet' type='text/css'>
+  
+  <style type="text/css">
+* {
+  box-sizing: border-box;
+}
+/*! normalize.css v1.1.1 | MIT License | git.io/normalize */
+
+/* ==========================================================================
+   HTML5 display definitions
+   ========================================================================== */
+
+/**
+ * Correct `block` display not defined in IE 6/7/8/9 and Firefox 3.
+ */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+    display: block;
+}
+
+/**
+ * Correct `inline-block` display not defined in IE 6/7/8/9 and Firefox 3.
+ */
+
+audio,
+canvas,
+video {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+
+audio:not([controls]) {
+    display: none;
+    height: 0;
+}
+
+/**
+ * Address styling not present in IE 7/8/9, Firefox 3, and Safari 4.
+ * Known issue: no IE 6 support.
+ */
+
+[hidden] {
+    display: none;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+/**
+ * 1. Prevent system color scheme's background color being used in Firefox, IE,
+ *    and Opera.
+ * 2. Prevent system color scheme's text color being used in Firefox, IE, and
+ *    Opera.
+ * 3. Correct text resizing oddly in IE 6/7 when body `font-size` is set using
+ *    `em` units.
+ * 4. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+
+html {
+    background: #fff; /* 1 */
+    color: #000; /* 2 */
+    font-size: 100%; /* 3 */
+    -webkit-text-size-adjust: 100%; /* 4 */
+    -ms-text-size-adjust: 100%; /* 4 */
+}
+
+/**
+ * Address `font-family` inconsistency between `textarea` and other form
+ * elements.
+ */
+
+html,
+button,
+input,
+select,
+textarea {
+    font-family: sans-serif;
+}
+
+/**
+ * Address margins handled incorrectly in IE 6/7.
+ */
+
+body {
+    margin: 0;
+}
+
+/* ==========================================================================
+   Links
+   ========================================================================== */
+
+/**
+ * Address `outline` inconsistency between Chrome and other browsers.
+ */
+
+a:focus {
+    outline: thin dotted;
+}
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+
+a:active,
+a:hover {
+    outline: 0;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+/**
+ * Address font sizes and margins set differently in IE 6/7.
+ * Address font sizes within `section` and `article` in Firefox 4+, Safari 5,
+ * and Chrome.
+ */
+
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin: 0.83em 0;
+}
+
+h3 {
+    font-size: 1.17em;
+    margin: 1em 0;
+}
+
+h4 {
+    font-size: 1em;
+    margin: 1.33em 0;
+}
+
+h5 {
+    font-size: 0.83em;
+    margin: 1.67em 0;
+}
+
+h6 {
+    font-size: 0.67em;
+    margin: 2.33em 0;
+}
+
+/**
+ * Address styling not present in IE 7/8/9, Safari 5, and Chrome.
+ */
+
+abbr[title] {
+    border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 3+, Safari 4/5, and Chrome.
+ */
+
+b,
+strong {
+    font-weight: bold;
+}
+
+blockquote {
+    margin: 1em 40px;
+}
+
+/**
+ * Address styling not present in Safari 5 and Chrome.
+ */
+
+dfn {
+    font-style: italic;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ * Known issue: no IE 6/7 normalization.
+ */
+
+hr {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 0;
+}
+
+/**
+ * Address styling not present in IE 6/7/8/9.
+ */
+
+mark {
+    background: #ff0;
+    color: #000;
+}
+
+/**
+ * Address margins set differently in IE 6/7.
+ */
+
+p,
+pre {
+    margin: 1em 0;
+}
+
+/**
+ * Correct font family set oddly in IE 6, Safari 4/5, and Chrome.
+ */
+
+code,
+kbd,
+pre,
+samp {
+    font-family: monospace, serif;
+    _font-family: 'courier new', monospace;
+    font-size: 1em;
+}
+
+/**
+ * Improve readability of pre-formatted text in all browsers.
+ */
+
+pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/**
+ * Address CSS quotes not supported in IE 6/7.
+ */
+
+q {
+    quotes: none;
+}
+
+/**
+ * Address `quotes` property not supported in Safari 4.
+ */
+
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+
+small {
+    font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+/* ==========================================================================
+   Lists
+   ========================================================================== */
+
+/**
+ * Address margins set differently in IE 6/7.
+ */
+
+dl,
+menu,
+ol,
+ul {
+    margin: 1em 0;
+}
+
+dd {
+    margin: 0 0 0 40px;
+}
+
+/**
+ * Address paddings set differently in IE 6/7.
+ */
+
+menu,
+ol,
+ul {
+    padding: 0 0 0 40px;
+}
+
+/**
+ * Correct list images handled incorrectly in IE 7.
+ */
+
+nav ul,
+nav ol {
+    list-style: none;
+    list-style-image: none;
+}
+
+/* ==========================================================================
+   Embedded content
+   ========================================================================== */
+
+/**
+ * 1. Remove border when inside `a` element in IE 6/7/8/9 and Firefox 3.
+ * 2. Improve image quality when scaled in IE 7.
+ */
+
+img {
+    border: 0; /* 1 */
+    -ms-interpolation-mode: bicubic; /* 2 */
+}
+
+/**
+ * Correct overflow displayed oddly in IE 9.
+ */
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   Figures
+   ========================================================================== */
+
+/**
+ * Address margin not present in IE 6/7/8/9, Safari 5, and Opera 11.
+ */
+
+figure {
+    margin: 0;
+}
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+
+/**
+ * Correct margin displayed oddly in IE 6/7.
+ */
+
+form {
+    margin: 0;
+}
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+
+fieldset {
+    border: 1px solid #c0c0c0;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct color not being inherited in IE 6/7/8/9.
+ * 2. Correct text not wrapping in Firefox 3.
+ * 3. Correct alignment displayed oddly in IE 6/7.
+ */
+
+legend {
+    border: 0; /* 1 */
+    padding: 0;
+    white-space: normal; /* 2 */
+    *margin-left: -7px; /* 3 */
+}
+
+/**
+ * 1. Correct font size not being inherited in all browsers.
+ * 2. Address margins set differently in IE 6/7, Firefox 3+, Safari 5,
+ *    and Chrome.
+ * 3. Improve appearance and consistency in all browsers.
+ */
+
+button,
+input,
+select,
+textarea {
+    font-size: 100%; /* 1 */
+    margin: 0; /* 2 */
+    vertical-align: baseline; /* 3 */
+    *vertical-align: middle; /* 3 */
+}
+
+/**
+ * Address Firefox 3+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+
+button,
+input {
+    line-height: normal;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Chrome, Safari 5+, and IE 6+.
+ * Correct `select` style inheritance in Firefox 4+ and Opera.
+ */
+
+button,
+select {
+    text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ * 4. Remove inner spacing in IE 7 without affecting normal text inputs.
+ *    Known issue: inner spacing remains in IE 6.
+ */
+
+button,
+html input[type="button"], /* 1 */
+input[type="reset"],
+input[type="submit"] {
+    -webkit-appearance: button; /* 2 */
+    cursor: pointer; /* 3 */
+    *overflow: visible;  /* 4 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+
+button[disabled],
+html input[disabled] {
+    cursor: default;
+}
+
+/**
+ * 1. Address box sizing set to content-box in IE 8/9.
+ * 2. Remove excess padding in IE 8/9.
+ * 3. Remove excess padding in IE 7.
+ *    Known issue: excess padding remains in IE 6.
+ */
+
+input[type="checkbox"],
+input[type="radio"] {
+    box-sizing: border-box; /* 1 */
+    padding: 0; /* 2 */
+    *height: 13px; /* 3 */
+    *width: 13px; /* 3 */
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
+ *    (include `-moz` to future-proof).
+ */
+
+input[type="search"] {
+    -webkit-appearance: textfield; /* 1 */
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box; /* 2 */
+    box-sizing: content-box;
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari 5 and Chrome
+ * on OS X.
+ */
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+/**
+ * Remove inner padding and border in Firefox 3+.
+ */
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+/**
+ * 1. Remove default vertical scrollbar in IE 6/7/8/9.
+ * 2. Improve readability and alignment in all browsers.
+ */
+
+textarea {
+    overflow: auto; /* 1 */
+    vertical-align: top; /* 2 */
+}
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+
+/**
+ * Remove most spacing between table cells.
+ */
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+</style>
+  <style type="text/css">
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+  }
+  body {
+    background: #fff;
+    font-family: "Source Sans Pro", "Helvetica Neueue", Helvetica, sans;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.6em;
+  }
+  #content {
+    width: 70%;
+    max-width: 850px;
+    float: left;
+    padding: 30px 60px;
+    border-left: 1px solid #ddd;
+  }
+  #sidebar {
+    width: 25%;
+    float: left;
+    padding: 30px;
+    overflow: hidden;
+  }
+  #nav {
+    font-size: 130%;
+    margin: 0 0 15px 0;
+  }
+
+  #top {
+    display: block;
+    position: fixed;
+    bottom: 5px;
+    left: 5px;
+    font-size: .85em;
+    text-transform: uppercase;
+  }
+
+  #footer {
+    font-size: .75em;
+    padding: 5px 30px;
+    border-top: 1px solid #ddd;
+    text-align: right;
+  }
+    #footer p {
+      margin: 0 0 0 30px;
+      display: inline-block;
+    }
+
+  h1, h2, h3, h4, h5 {
+    font-weight: 300;
+  }
+  h1 {
+    font-size: 2.5em;
+    line-height: 1.1em;
+    margin: 0 0 .50em 0;
+  }
+
+  h2 {
+    font-size: 1.75em;
+    margin: 1em 0 .50em 0;
+  }
+
+  h3 {
+    margin: 25px 0 10px 0;
+  }
+
+  h4 {
+    margin: 0;
+    font-size: 105%;
+  }
+
+  a {
+    color: #058;
+    text-decoration: none;
+    transition: color .3s ease-in-out;
+  }
+
+  a:hover {
+    color: #e08524;
+    transition: color .3s ease-in-out;
+  }
+
+  pre, code, .mono, .name {
+    font-family: "Ubuntu Mono", "Cousine", "DejaVu Sans Mono", monospace;
+  }
+
+  .title .name {
+    font-weight: bold;
+  }
+  .section-title {
+    margin-top: 2em;
+  }
+  .ident {
+    color: #900;
+  }
+
+  code {
+    background: #f9f9f9;
+  } 
+
+  pre {
+    background: #fefefe;
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 0 #f3f3f3;
+    margin: 0 30px;
+    padding: 15px 30px;
+  }
+
+  .codehilite {
+    margin: 0 30px 10px 30px;
+  }
+
+    .codehilite pre {
+      margin: 0;
+    }
+    .codehilite .err { background: #ff3300; color: #fff !important; } 
+
+  table#module-list {
+    font-size: 110%;
+  }
+
+    table#module-list tr td:first-child {
+      padding-right: 10px;
+      white-space: nowrap;
+    }
+
+    table#module-list td {
+      vertical-align: top;
+      padding-bottom: 8px;
+    }
+
+      table#module-list td p {
+        margin: 0 0 7px 0;
+      }
+
+  .def {
+    display: table;
+  }
+
+    .def p {
+      display: table-cell;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .def p:first-child {
+      white-space: nowrap;
+    }
+
+    .def p:last-child {
+      width: 100%;
+    }
+
+
+  #index {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+    ul#index .class_name {
+      /* font-size: 110%; */
+      font-weight: bold;
+    }
+    #index ul {
+      margin: 0;
+    }
+
+  .item {
+    margin: 0 0 15px 0;
+  }
+
+    .item .class {
+      margin: 0 0 25px 30px;
+    }
+
+      .item .class ul.class_list {
+        margin: 0 0 20px 0;
+      }
+
+    .item .name {
+      background: #fafafa;
+      margin: 0;
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 3px;
+      display: inline-block;
+      min-width: 40%;
+    }
+      .item .name:hover {
+        background: #f6f6f6;
+      }
+
+    .item .empty_desc {
+      margin: 0 0 5px 0;
+      padding: 0;
+    }
+
+    .item .inheritance {
+      margin: 3px 0 0 30px;
+    }
+
+    .item .inherited {
+      color: #666;
+    }
+
+    .item .desc {
+      padding: 0 8px;
+      margin: 0;
+    }
+
+      .item .desc p {
+        margin: 0 0 10px 0;
+      }
+
+    .source_cont {
+      margin: 0;
+      padding: 0;
+    }
+
+    .source_link a {
+      background: #ffc300;
+      font-weight: 400;
+      font-size: .75em;
+      text-transform: uppercase;
+      color: #fff;
+      text-shadow: 1px 1px 0 #f4b700;
+      
+      padding: 3px 8px;
+      border-radius: 2px;
+      transition: background .3s ease-in-out;
+    }
+      .source_link a:hover {
+        background: #FF7200;
+        text-shadow: none;
+        transition: background .3s ease-in-out;
+      }
+
+    .source {
+      display: none;
+      max-height: 600px;
+      overflow-y: scroll;
+      margin-bottom: 15px;
+    }
+
+      .source .codehilite {
+        margin: 0;
+      }
+
+  .desc h1, .desc h2, .desc h3 {
+    font-size: 100% !important;
+  }
+  .clear {
+    clear: both;
+  }
+
+  @media all and (max-width: 950px) {
+    #sidebar {
+      width: 35%;
+    }
+    #content {
+      width: 65%;
+    }
+  }
+  @media all and (max-width: 650px) {
+    #top {
+      display: none;
+    }
+    #sidebar {
+      float: none;
+      width: auto;
+    }
+    #content {
+      float: none;
+      width: auto;
+      padding: 30px;
+    }
+
+    #index ul {
+      padding: 0;
+      margin-bottom: 15px;
+    }
+    #index ul li {
+      display: inline-block;
+      margin-right: 30px;
+    }
+    #footer {
+      text-align: left;
+    }
+    #footer p {
+      display: block;
+      margin: inherit;
+    }
+  }
+
+  /*****************************/
+</style>
+  <style type="text/css">
+  pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.codehilite .hll { background-color: #ffffcc }
+.codehilite { background: #f8f8f8; }
+.codehilite .c { color: #3D7B7B; font-style: italic } /* Comment */
+.codehilite .err { border: 1px solid #FF0000 } /* Error */
+.codehilite .k { color: #008000; font-weight: bold } /* Keyword */
+.codehilite .o { color: #666666 } /* Operator */
+.codehilite .ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
+.codehilite .cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
+.codehilite .cp { color: #9C6500 } /* Comment.Preproc */
+.codehilite .cpf { color: #3D7B7B; font-style: italic } /* Comment.PreprocFile */
+.codehilite .c1 { color: #3D7B7B; font-style: italic } /* Comment.Single */
+.codehilite .cs { color: #3D7B7B; font-style: italic } /* Comment.Special */
+.codehilite .gd { color: #A00000 } /* Generic.Deleted */
+.codehilite .ge { font-style: italic } /* Generic.Emph */
+.codehilite .ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.codehilite .gr { color: #E40000 } /* Generic.Error */
+.codehilite .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.codehilite .gi { color: #008400 } /* Generic.Inserted */
+.codehilite .go { color: #717171 } /* Generic.Output */
+.codehilite .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.codehilite .gs { font-weight: bold } /* Generic.Strong */
+.codehilite .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.codehilite .gt { color: #0044DD } /* Generic.Traceback */
+.codehilite .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.codehilite .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.codehilite .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.codehilite .kp { color: #008000 } /* Keyword.Pseudo */
+.codehilite .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.codehilite .kt { color: #B00040 } /* Keyword.Type */
+.codehilite .m { color: #666666 } /* Literal.Number */
+.codehilite .s { color: #BA2121 } /* Literal.String */
+.codehilite .na { color: #687822 } /* Name.Attribute */
+.codehilite .nb { color: #008000 } /* Name.Builtin */
+.codehilite .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.codehilite .no { color: #880000 } /* Name.Constant */
+.codehilite .nd { color: #AA22FF } /* Name.Decorator */
+.codehilite .ni { color: #717171; font-weight: bold } /* Name.Entity */
+.codehilite .ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
+.codehilite .nf { color: #0000FF } /* Name.Function */
+.codehilite .nl { color: #767600 } /* Name.Label */
+.codehilite .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.codehilite .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.codehilite .nv { color: #19177C } /* Name.Variable */
+.codehilite .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.codehilite .w { color: #bbbbbb } /* Text.Whitespace */
+.codehilite .mb { color: #666666 } /* Literal.Number.Bin */
+.codehilite .mf { color: #666666 } /* Literal.Number.Float */
+.codehilite .mh { color: #666666 } /* Literal.Number.Hex */
+.codehilite .mi { color: #666666 } /* Literal.Number.Integer */
+.codehilite .mo { color: #666666 } /* Literal.Number.Oct */
+.codehilite .sa { color: #BA2121 } /* Literal.String.Affix */
+.codehilite .sb { color: #BA2121 } /* Literal.String.Backtick */
+.codehilite .sc { color: #BA2121 } /* Literal.String.Char */
+.codehilite .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.codehilite .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.codehilite .s2 { color: #BA2121 } /* Literal.String.Double */
+.codehilite .se { color: #AA5D1F; font-weight: bold } /* Literal.String.Escape */
+.codehilite .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.codehilite .si { color: #A45A77; font-weight: bold } /* Literal.String.Interpol */
+.codehilite .sx { color: #008000 } /* Literal.String.Other */
+.codehilite .sr { color: #A45A77 } /* Literal.String.Regex */
+.codehilite .s1 { color: #BA2121 } /* Literal.String.Single */
+.codehilite .ss { color: #19177C } /* Literal.String.Symbol */
+.codehilite .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.codehilite .fm { color: #0000FF } /* Name.Function.Magic */
+.codehilite .vc { color: #19177C } /* Name.Variable.Class */
+.codehilite .vg { color: #19177C } /* Name.Variable.Global */
+.codehilite .vi { color: #19177C } /* Name.Variable.Instance */
+.codehilite .vm { color: #19177C } /* Name.Variable.Magic */
+.codehilite .il { color: #666666 } /* Literal.Number.Integer.Long */
+  </style>
+  <style type="text/css">
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
+</style>
+
+  <script type="text/javascript">
+  function toggle(id, $link) {
+    $node = document.getElementById(id);
+    if (!$node)
+    return;
+    if (!$node.style.display || $node.style.display == 'none') {
+    $node.style.display = 'block';
+    $link.innerHTML = 'Hide source &nequiv;';
+    } else {
+    $node.style.display = 'none';
+    $link.innerHTML = 'Show source &equiv;';
+    }
+  }
+  </script>
+</head>
+<body>
+<a href="#" id="top">Top</a>
+<div id="container">
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <div id="sidebar">
+    <h1>Index</h1>
+    <ul id="index">
+    <li class="set"><h3>Super-module</h3>
+      <ul>
+        <li class="mono"><a href="index.html">tegridymidi</a></li>
+      </ul>
+    </li>
+    <li class="set"><h3><a href="#header-variables">Module variables</a></h3>
+      
+  <ul>
+    <li class="mono"><a href="#tegridymidi.files_helpers.hashlib">hashlib</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.os">os</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.pickle">pickle</a></li>
+  </ul>
+
+    </li>
+
+    <li class="set"><h3><a href="#header-functions">Functions</a></h3>
+      
+  <ul>
+    <li class="mono"><a href="#tegridymidi.files_helpers.build_directory_tree">build_directory_tree</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.file_time_stamp">file_time_stamp</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.md5_hash">md5_hash</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.pickle_file_writer">pickle_file_writer</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.pitckle_file_reader">pitckle_file_reader</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.print_directory_tree">print_directory_tree</a></li>
+  </ul>
+
+    </li>
+
+    <li class="set"><h3><a href="#header-classes">Classes</a></h3>
+      <ul>
+        <li class="mono">
+        <span class="class_name"><a href="#tegridymidi.files_helpers.datetime">datetime</a></span>
+        
+          
+  <ul>
+    <li class="mono"><a href="#tegridymidi.files_helpers.datetime.astimezone">astimezone</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.datetime.combine">combine</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.datetime.ctime">ctime</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.datetime.date">date</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.datetime.dst">dst</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.datetime.fromisocalendar">fromisocalendar</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.datetime.fromisoformat">fromisoformat</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.datetime.fromordinal">fromordinal</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.datetime.fromtimestamp">fromtimestamp</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.datetime.isocalendar">isocalendar</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.datetime.isoformat">isoformat</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.datetime.isoweekday">isoweekday</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.datetime.now">now</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.datetime.replace">replace</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.datetime.strftime">strftime</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.datetime.strptime">strptime</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.datetime.time">time</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.datetime.timestamp">timestamp</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.datetime.timetuple">timetuple</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.datetime.timetz">timetz</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.datetime.today">today</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.datetime.toordinal">toordinal</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.datetime.tzname">tzname</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.datetime.utcfromtimestamp">utcfromtimestamp</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.datetime.utcnow">utcnow</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.datetime.utcoffset">utcoffset</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.datetime.utctimetuple">utctimetuple</a></li>
+    <li class="mono"><a href="#tegridymidi.files_helpers.datetime.weekday">weekday</a></li>
+  </ul>
+
+        </li>
+      </ul>
+    </li>
+
+    </ul>
+  </div>
+
+<article id="content">
+  
+
+  
+
+
+  <header id="section-intro">
+  <h1 class="title"><span class="name">tegridymidi.files_helpers</span> module</h1>
+  
+  
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-tegridymidi.files_helpers', this);">Show source &equiv;</a></p>
+  <div id="source-tegridymidi.files_helpers" class="source">
+    <div class="codehilite"><pre><span></span><span class="c1">#=======================================================================================================</span>
+<span class="c1"># Files helpers functions</span>
+<span class="c1">#=======================================================================================================</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">import</span> <span class="nn">hashlib</span>
+
+<span class="c1">#===============================================================================</span>
+
+<span class="k">def</span> <span class="nf">build_directory_tree</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">exclude_hidden</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">is_root</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="n">is_root</span><span class="p">:</span>
+        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">root_dir</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span>
+        <span class="n">indent</span> <span class="o">+=</span> <span class="s1">&#39;    &#39;</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">root_dir</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">exclude_hidden</span> <span class="ow">and</span> <span class="n">item</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">))]</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">indent</span> <span class="o">+</span> <span class="s1">&#39;└── &#39;</span> <span class="o">+</span> <span class="n">item</span>
+            <span class="n">new_indent</span> <span class="o">=</span> <span class="n">indent</span> <span class="o">+</span> <span class="s1">&#39;    &#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">indent</span> <span class="o">+</span> <span class="s1">&#39;├── &#39;</span> <span class="o">+</span> <span class="n">item</span>
+            <span class="n">new_indent</span> <span class="o">=</span> <span class="n">indent</span> <span class="o">+</span> <span class="s1">&#39;│   &#39;</span>
+        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+            <span class="n">lines</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">build_directory_tree</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">new_indent</span><span class="p">,</span> <span class="n">exclude_hidden</span><span class="p">,</span> <span class="n">is_root</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">lines</span>
+
+<span class="c1">#===============================================================================</span>
+
+<span class="k">def</span> <span class="nf">print_directory_tree</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">exclude_hidden</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">build_directory_tree</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">exclude_hidden</span><span class="o">=</span><span class="n">exclude_hidden</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">output_file</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+<span class="c1">#===============================================================================</span>
+
+<span class="k">def</span> <span class="nf">file_time_stamp</span><span class="p">(</span><span class="n">input_file_name</span><span class="o">=</span><span class="s1">&#39;File_Created_on_&#39;</span><span class="p">,</span> <span class="n">ext</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>
+
+<span class="w">  </span><span class="sd">&#39;&#39;&#39;Tegridy File Time Stamp</span>
+<span class="sd">     </span>
+<span class="sd">  Input: Full path and file name without extention</span>
+<span class="sd">         File extension</span>
+<span class="sd">          </span>
+<span class="sd">  Output: File name string with time-stamp and extension (time-stamped file name)</span>
+
+<span class="sd">  Project Los Angeles</span>
+<span class="sd">  Tegridy Code 2021&#39;&#39;&#39;</span>       
+
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Time-stamping output file...&#39;</span><span class="p">)</span>
+
+  <span class="n">now</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+  <span class="n">now_n</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
+  <span class="n">now_n</span> <span class="o">=</span> <span class="n">now_n</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>
+  <span class="n">now_n</span> <span class="o">=</span> <span class="n">now_n</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>
+  <span class="n">now</span> <span class="o">=</span> <span class="n">now_n</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>
+      
+  <span class="n">fname</span> <span class="o">=</span> <span class="n">input_file_name</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">now</span><span class="p">)</span> <span class="o">+</span> <span class="n">ext</span>
+
+  <span class="k">return</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+
+<span class="c1">#===============================================================================</span>
+
+<span class="k">def</span> <span class="nf">pickle_file_writer</span><span class="p">(</span><span class="n">Data</span><span class="p">,</span> <span class="n">input_file_name</span><span class="o">=</span><span class="s1">&#39;TMIDI_Pickle_File&#39;</span><span class="p">):</span>
+
+<span class="w">  </span><span class="sd">&#39;&#39;&#39;Tegridy Pickle File Writer</span>
+<span class="sd">     </span>
+<span class="sd">  Input: Data to write (I.e. a list)</span>
+<span class="sd">         Full path and file name without extention</span>
+<span class="sd">         </span>
+<span class="sd">  Output: Named Pickle file</span>
+
+<span class="sd">  Project Los Angeles</span>
+<span class="sd">  Tegridy Code 2021&#39;&#39;&#39;</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tegridy Pickle File Writer&#39;</span><span class="p">)</span>
+
+  <span class="n">full_path_to_output_dataset_to</span> <span class="o">=</span> <span class="n">input_file_name</span> <span class="o">+</span> <span class="s1">&#39;.pickle&#39;</span>
+
+  <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">full_path_to_output_dataset_to</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">full_path_to_output_dataset_to</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Removing old Dataset...&#39;</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Creating new Dataset file...&quot;</span><span class="p">)</span>
+
+  <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">full_path_to_output_dataset_to</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">filehandle</span><span class="p">:</span>
+    <span class="c1"># store the data as binary data stream</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">Data</span><span class="p">,</span> <span class="n">filehandle</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">pickle</span><span class="o">.</span><span class="n">HIGHEST_PROTOCOL</span><span class="p">)</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dataset was saved as:&#39;</span><span class="p">,</span> <span class="n">full_path_to_output_dataset_to</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Task complete. Enjoy! :)&#39;</span><span class="p">)</span>
+
+<span class="c1">#===============================================================================</span>
+
+<span class="k">def</span> <span class="nf">pitckle_file_reader</span><span class="p">(</span><span class="n">input_file_name</span><span class="o">=</span><span class="s1">&#39;TMIDI_Pickle_File&#39;</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="s1">&#39;.pickle&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+
+<span class="w">  </span><span class="sd">&#39;&#39;&#39;Tegridy Pickle File Loader</span>
+<span class="sd">     </span>
+<span class="sd">  Input: Full path and file name with or without extention</span>
+<span class="sd">         File extension if different from default .pickle</span>
+<span class="sd">       </span>
+<span class="sd">  Output: Standard Python 3 unpickled data object</span>
+
+<span class="sd">  Project Los Angeles</span>
+<span class="sd">  Tegridy Code 2021&#39;&#39;&#39;</span>
+
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tegridy Pickle File Loader&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Loading the pickle file. Please wait...&#39;</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">input_file_name</span><span class="p">)</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">ext</span><span class="p">):</span>
+    <span class="n">fname</span> <span class="o">=</span> <span class="n">input_file_name</span>
+  
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">fname</span> <span class="o">=</span> <span class="n">input_file_name</span> <span class="o">+</span> <span class="n">ext</span>
+
+  <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">pickle_file</span><span class="p">:</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">pickle_file</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Done!&#39;</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">content</span>
+
+<span class="c1">#===============================================================================</span>
+
+<span class="k">def</span> <span class="nf">md5_hash</span><span class="p">(</span><span class="n">file_path_or_data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">original_md5_hash</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+  <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">file_path_or_data</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">:</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path_or_data</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_to_check</span><span class="p">:</span>
+      <span class="n">data</span> <span class="o">=</span> <span class="n">file_to_check</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+      
+      <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">md5</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">file_path_or_data</span><span class="p">:</span>
+      <span class="n">md5</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">file_path_or_data</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+
+  <span class="k">if</span> <span class="n">md5</span><span class="p">:</span>
+
+    <span class="k">if</span> <span class="n">original_md5_hash</span><span class="p">:</span>
+
+      <span class="k">if</span> <span class="n">md5</span> <span class="o">==</span> <span class="n">original_md5_hash</span><span class="p">:</span>
+        <span class="n">check</span> <span class="o">=</span> <span class="kc">True</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">check</span> <span class="o">=</span> <span class="kc">False</span>
+        
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">check</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">return</span> <span class="p">[</span><span class="n">md5</span><span class="p">,</span> <span class="n">check</span><span class="p">]</span>
+
+  <span class="k">else</span><span class="p">:</span>
+
+    <span class="n">md5</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">check</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">return</span> <span class="p">[</span><span class="n">md5</span><span class="p">,</span> <span class="n">check</span><span class="p">]</span>
+
+<span class="c1">#===============================================================================</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">()</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)]</span>
+          
+<span class="c1">#=======================================================================================================</span>
+<span class="c1"># This is the end of files_helpers module</span>
+<span class="c1">#=======================================================================================================</span>
+</pre></div>
+
+  </div>
+
+  </header>
+
+  <section id="section-items">
+    <h2 class="section-title" id="header-variables">Module variables</h2>
+      <div class="item">
+      <p id="tegridymidi.files_helpers.hashlib" class="name">var <span class="ident">hashlib</span></p>
+      
+  
+  <div class="source_cont">
+</div>
+
+      </div>
+      <div class="item">
+      <p id="tegridymidi.files_helpers.os" class="name">var <span class="ident">os</span></p>
+      
+  
+  <div class="source_cont">
+</div>
+
+      </div>
+      <div class="item">
+      <p id="tegridymidi.files_helpers.pickle" class="name">var <span class="ident">pickle</span></p>
+      
+  
+  <div class="source_cont">
+</div>
+
+      </div>
+
+    <h2 class="section-title" id="header-functions">Functions</h2>
+      
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.build_directory_tree">
+    <p>def <span class="ident">build_directory_tree</span>(</p><p>root_dir, indent=&#39;&#39;, exclude_hidden=True, is_root=True)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-tegridymidi.files_helpers.build_directory_tree', this);">Show source &equiv;</a></p>
+  <div id="source-tegridymidi.files_helpers.build_directory_tree" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">build_directory_tree</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">exclude_hidden</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">is_root</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="n">is_root</span><span class="p">:</span>
+        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">root_dir</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span>
+        <span class="n">indent</span> <span class="o">+=</span> <span class="s1">&#39;    &#39;</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">root_dir</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">exclude_hidden</span> <span class="ow">and</span> <span class="n">item</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">))]</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">indent</span> <span class="o">+</span> <span class="s1">&#39;└── &#39;</span> <span class="o">+</span> <span class="n">item</span>
+            <span class="n">new_indent</span> <span class="o">=</span> <span class="n">indent</span> <span class="o">+</span> <span class="s1">&#39;    &#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">indent</span> <span class="o">+</span> <span class="s1">&#39;├── &#39;</span> <span class="o">+</span> <span class="n">item</span>
+            <span class="n">new_indent</span> <span class="o">=</span> <span class="n">indent</span> <span class="o">+</span> <span class="s1">&#39;│   &#39;</span>
+        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+            <span class="n">lines</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">build_directory_tree</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">new_indent</span><span class="p">,</span> <span class="n">exclude_hidden</span><span class="p">,</span> <span class="n">is_root</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">lines</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.file_time_stamp">
+    <p>def <span class="ident">file_time_stamp</span>(</p><p>input_file_name=&#39;File_Created_on_&#39;, ext=&#39;&#39;)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Tegridy File Time Stamp</p>
+<p>Input: Full path and file name without extention
+       File extension</p>
+<p>Output: File name string with time-stamp and extension (time-stamped file name)</p>
+<p>Project Los Angeles
+Tegridy Code 2021</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-tegridymidi.files_helpers.file_time_stamp', this);">Show source &equiv;</a></p>
+  <div id="source-tegridymidi.files_helpers.file_time_stamp" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">file_time_stamp</span><span class="p">(</span><span class="n">input_file_name</span><span class="o">=</span><span class="s1">&#39;File_Created_on_&#39;</span><span class="p">,</span> <span class="n">ext</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>
+
+<span class="w">  </span><span class="sd">&#39;&#39;&#39;Tegridy File Time Stamp</span>
+<span class="sd">     </span>
+<span class="sd">  Input: Full path and file name without extention</span>
+<span class="sd">         File extension</span>
+<span class="sd">          </span>
+<span class="sd">  Output: File name string with time-stamp and extension (time-stamped file name)</span>
+
+<span class="sd">  Project Los Angeles</span>
+<span class="sd">  Tegridy Code 2021&#39;&#39;&#39;</span>       
+
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Time-stamping output file...&#39;</span><span class="p">)</span>
+
+  <span class="n">now</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+  <span class="n">now_n</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
+  <span class="n">now_n</span> <span class="o">=</span> <span class="n">now_n</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>
+  <span class="n">now_n</span> <span class="o">=</span> <span class="n">now_n</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>
+  <span class="n">now</span> <span class="o">=</span> <span class="n">now_n</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>
+      
+  <span class="n">fname</span> <span class="o">=</span> <span class="n">input_file_name</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">now</span><span class="p">)</span> <span class="o">+</span> <span class="n">ext</span>
+
+  <span class="k">return</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.md5_hash">
+    <p>def <span class="ident">md5_hash</span>(</p><p>file_path_or_data=None, original_md5_hash=None)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-tegridymidi.files_helpers.md5_hash', this);">Show source &equiv;</a></p>
+  <div id="source-tegridymidi.files_helpers.md5_hash" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">md5_hash</span><span class="p">(</span><span class="n">file_path_or_data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">original_md5_hash</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+  <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">file_path_or_data</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">:</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path_or_data</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_to_check</span><span class="p">:</span>
+      <span class="n">data</span> <span class="o">=</span> <span class="n">file_to_check</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+      
+      <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">md5</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">file_path_or_data</span><span class="p">:</span>
+      <span class="n">md5</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">file_path_or_data</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+
+  <span class="k">if</span> <span class="n">md5</span><span class="p">:</span>
+
+    <span class="k">if</span> <span class="n">original_md5_hash</span><span class="p">:</span>
+
+      <span class="k">if</span> <span class="n">md5</span> <span class="o">==</span> <span class="n">original_md5_hash</span><span class="p">:</span>
+        <span class="n">check</span> <span class="o">=</span> <span class="kc">True</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">check</span> <span class="o">=</span> <span class="kc">False</span>
+        
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">check</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">return</span> <span class="p">[</span><span class="n">md5</span><span class="p">,</span> <span class="n">check</span><span class="p">]</span>
+
+  <span class="k">else</span><span class="p">:</span>
+
+    <span class="n">md5</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">check</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">return</span> <span class="p">[</span><span class="n">md5</span><span class="p">,</span> <span class="n">check</span><span class="p">]</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.pickle_file_writer">
+    <p>def <span class="ident">pickle_file_writer</span>(</p><p>Data, input_file_name=&#39;TMIDI_Pickle_File&#39;)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Tegridy Pickle File Writer</p>
+<p>Input: Data to write (I.e. a list)
+       Full path and file name without extention</p>
+<p>Output: Named Pickle file</p>
+<p>Project Los Angeles
+Tegridy Code 2021</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-tegridymidi.files_helpers.pickle_file_writer', this);">Show source &equiv;</a></p>
+  <div id="source-tegridymidi.files_helpers.pickle_file_writer" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">pickle_file_writer</span><span class="p">(</span><span class="n">Data</span><span class="p">,</span> <span class="n">input_file_name</span><span class="o">=</span><span class="s1">&#39;TMIDI_Pickle_File&#39;</span><span class="p">):</span>
+
+<span class="w">  </span><span class="sd">&#39;&#39;&#39;Tegridy Pickle File Writer</span>
+<span class="sd">     </span>
+<span class="sd">  Input: Data to write (I.e. a list)</span>
+<span class="sd">         Full path and file name without extention</span>
+<span class="sd">         </span>
+<span class="sd">  Output: Named Pickle file</span>
+
+<span class="sd">  Project Los Angeles</span>
+<span class="sd">  Tegridy Code 2021&#39;&#39;&#39;</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tegridy Pickle File Writer&#39;</span><span class="p">)</span>
+
+  <span class="n">full_path_to_output_dataset_to</span> <span class="o">=</span> <span class="n">input_file_name</span> <span class="o">+</span> <span class="s1">&#39;.pickle&#39;</span>
+
+  <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">full_path_to_output_dataset_to</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">full_path_to_output_dataset_to</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Removing old Dataset...&#39;</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Creating new Dataset file...&quot;</span><span class="p">)</span>
+
+  <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">full_path_to_output_dataset_to</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">filehandle</span><span class="p">:</span>
+    <span class="c1"># store the data as binary data stream</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">Data</span><span class="p">,</span> <span class="n">filehandle</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">pickle</span><span class="o">.</span><span class="n">HIGHEST_PROTOCOL</span><span class="p">)</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dataset was saved as:&#39;</span><span class="p">,</span> <span class="n">full_path_to_output_dataset_to</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Task complete. Enjoy! :)&#39;</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.pitckle_file_reader">
+    <p>def <span class="ident">pitckle_file_reader</span>(</p><p>input_file_name=&#39;TMIDI_Pickle_File&#39;, ext=&#39;.pickle&#39;, verbose=True)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Tegridy Pickle File Loader</p>
+<p>Input: Full path and file name with or without extention
+       File extension if different from default .pickle</p>
+<p>Output: Standard Python 3 unpickled data object</p>
+<p>Project Los Angeles
+Tegridy Code 2021</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-tegridymidi.files_helpers.pitckle_file_reader', this);">Show source &equiv;</a></p>
+  <div id="source-tegridymidi.files_helpers.pitckle_file_reader" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">pitckle_file_reader</span><span class="p">(</span><span class="n">input_file_name</span><span class="o">=</span><span class="s1">&#39;TMIDI_Pickle_File&#39;</span><span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="s1">&#39;.pickle&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+
+<span class="w">  </span><span class="sd">&#39;&#39;&#39;Tegridy Pickle File Loader</span>
+<span class="sd">     </span>
+<span class="sd">  Input: Full path and file name with or without extention</span>
+<span class="sd">         File extension if different from default .pickle</span>
+<span class="sd">       </span>
+<span class="sd">  Output: Standard Python 3 unpickled data object</span>
+
+<span class="sd">  Project Los Angeles</span>
+<span class="sd">  Tegridy Code 2021&#39;&#39;&#39;</span>
+
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tegridy Pickle File Loader&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Loading the pickle file. Please wait...&#39;</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">input_file_name</span><span class="p">)</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">ext</span><span class="p">):</span>
+    <span class="n">fname</span> <span class="o">=</span> <span class="n">input_file_name</span>
+  
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">fname</span> <span class="o">=</span> <span class="n">input_file_name</span> <span class="o">+</span> <span class="n">ext</span>
+
+  <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">pickle_file</span><span class="p">:</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">pickle_file</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Done!&#39;</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">content</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.print_directory_tree">
+    <p>def <span class="ident">print_directory_tree</span>(</p><p>root_dir, exclude_hidden=True, output_file=None)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-tegridymidi.files_helpers.print_directory_tree', this);">Show source &equiv;</a></p>
+  <div id="source-tegridymidi.files_helpers.print_directory_tree" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">print_directory_tree</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">exclude_hidden</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">output_file</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">build_directory_tree</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="n">exclude_hidden</span><span class="o">=</span><span class="n">exclude_hidden</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">output_file</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+
+    <h2 class="section-title" id="header-classes">Classes</h2>
+      
+      <div class="item">
+      <p id="tegridymidi.files_helpers.datetime" class="name">class <span class="ident">datetime</span></p>
+      
+  
+    <div class="desc"><p>datetime(year, month, day[, hour[, minute[, second[, microsecond[,tzinfo]]]]])</p>
+<p>The year, month and day arguments are required. tzinfo may be None, or an
+instance of a tzinfo subclass. The remaining arguments may be ints.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-tegridymidi.files_helpers.datetime', this);">Show source &equiv;</a></p>
+  <div id="source-tegridymidi.files_helpers.datetime" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">datetime</span><span class="p">(</span><span class="n">date</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;datetime(year, month, day[, hour[, minute[, second[, microsecond[,tzinfo]]]]])</span>
+
+<span class="sd">    The year, month and day arguments are required. tzinfo may be None, or an</span>
+<span class="sd">    instance of a tzinfo subclass. The remaining arguments may be ints.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="vm">__slots__</span> <span class="o">+</span> <span class="n">time</span><span class="o">.</span><span class="vm">__slots__</span>
+
+    <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hour</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">minute</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">second</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                <span class="n">microsecond</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">fold</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="p">(</span><span class="nb">bytes</span><span class="p">,</span> <span class="nb">str</span><span class="p">))</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="o">==</span> <span class="mi">10</span> <span class="ow">and</span>
+            <span class="mi">1</span> <span class="o">&lt;=</span> <span class="nb">ord</span><span class="p">(</span><span class="n">year</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span><span class="o">&amp;</span><span class="mh">0x7F</span> <span class="o">&lt;=</span> <span class="mi">12</span><span class="p">):</span>
+            <span class="c1"># Pickle support</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">year</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="s1">&#39;latin1&#39;</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">UnicodeEncodeError</span><span class="p">:</span>
+                    <span class="c1"># More informative error message.</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="s2">&quot;Failed to encode latin1 string when unpickling &quot;</span>
+                        <span class="s2">&quot;a datetime object. &quot;</span>
+                        <span class="s2">&quot;pickle.load(data, encoding=&#39;latin1&#39;) is assumed.&quot;</span><span class="p">)</span>
+            <span class="bp">self</span> <span class="o">=</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__setstate</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_hashcode</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="k">return</span> <span class="bp">self</span>
+        <span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span> <span class="o">=</span> <span class="n">_check_date_fields</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">)</span>
+        <span class="n">hour</span><span class="p">,</span> <span class="n">minute</span><span class="p">,</span> <span class="n">second</span><span class="p">,</span> <span class="n">microsecond</span><span class="p">,</span> <span class="n">fold</span> <span class="o">=</span> <span class="n">_check_time_fields</span><span class="p">(</span>
+            <span class="n">hour</span><span class="p">,</span> <span class="n">minute</span><span class="p">,</span> <span class="n">second</span><span class="p">,</span> <span class="n">microsecond</span><span class="p">,</span> <span class="n">fold</span><span class="p">)</span>
+        <span class="n">_check_tzinfo_arg</span><span class="p">(</span><span class="n">tzinfo</span><span class="p">)</span>
+        <span class="bp">self</span> <span class="o">=</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_year</span> <span class="o">=</span> <span class="n">year</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_month</span> <span class="o">=</span> <span class="n">month</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_day</span> <span class="o">=</span> <span class="n">day</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hour</span> <span class="o">=</span> <span class="n">hour</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_minute</span> <span class="o">=</span> <span class="n">minute</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_second</span> <span class="o">=</span> <span class="n">second</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_microsecond</span> <span class="o">=</span> <span class="n">microsecond</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tzinfo</span> <span class="o">=</span> <span class="n">tzinfo</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hashcode</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fold</span> <span class="o">=</span> <span class="n">fold</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="c1"># Read-only field accessors</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">hour</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;hour (0-23)&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hour</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">minute</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;minute (0-59)&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minute</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">second</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;second (0-59)&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_second</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">microsecond</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;microsecond (0-999999)&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_microsecond</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">tzinfo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;timezone info object&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tzinfo</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">fold</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fold</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">_fromtimestamp</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">utc</span><span class="p">,</span> <span class="n">tz</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Construct a datetime from a POSIX timestamp (like time.time()).</span>
+
+<span class="sd">        A timezone info object may be passed in as well.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">frac</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">_math</span><span class="o">.</span><span class="n">modf</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">us</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">frac</span> <span class="o">*</span> <span class="mf">1e6</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">us</span> <span class="o">&gt;=</span> <span class="mi">1000000</span><span class="p">:</span>
+            <span class="n">t</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">us</span> <span class="o">-=</span> <span class="mi">1000000</span>
+        <span class="k">elif</span> <span class="n">us</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">t</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="n">us</span> <span class="o">+=</span> <span class="mi">1000000</span>
+
+        <span class="n">converter</span> <span class="o">=</span> <span class="n">_time</span><span class="o">.</span><span class="n">gmtime</span> <span class="k">if</span> <span class="n">utc</span> <span class="k">else</span> <span class="n">_time</span><span class="o">.</span><span class="n">localtime</span>
+        <span class="n">y</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">hh</span><span class="p">,</span> <span class="n">mm</span><span class="p">,</span> <span class="n">ss</span><span class="p">,</span> <span class="n">weekday</span><span class="p">,</span> <span class="n">jday</span><span class="p">,</span> <span class="n">dst</span> <span class="o">=</span> <span class="n">converter</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">ss</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">ss</span><span class="p">,</span> <span class="mi">59</span><span class="p">)</span>    <span class="c1"># clamp out leap seconds if the platform has them</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">hh</span><span class="p">,</span> <span class="n">mm</span><span class="p">,</span> <span class="n">ss</span><span class="p">,</span> <span class="n">us</span><span class="p">,</span> <span class="n">tz</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">tz</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">utc</span><span class="p">:</span>
+            <span class="c1"># As of version 2015f max fold in IANA database is</span>
+            <span class="c1"># 23 hours at 1969-09-30 13:00:00 in Kwajalein.</span>
+            <span class="c1"># Let&#39;s probe 24 hours in the past to detect a transition:</span>
+            <span class="n">max_fold_seconds</span> <span class="o">=</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">3600</span>
+
+            <span class="c1"># On Windows localtime_s throws an OSError for negative values,</span>
+            <span class="c1"># thus we can&#39;t perform fold detection for values of time less</span>
+            <span class="c1"># than the max time fold. See comments in _datetimemodule&#39;s</span>
+            <span class="c1"># version of this method for more details.</span>
+            <span class="k">if</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="n">max_fold_seconds</span> <span class="ow">and</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;win&quot;</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">result</span>
+
+            <span class="n">y</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">hh</span><span class="p">,</span> <span class="n">mm</span><span class="p">,</span> <span class="n">ss</span> <span class="o">=</span> <span class="n">converter</span><span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">max_fold_seconds</span><span class="p">)[:</span><span class="mi">6</span><span class="p">]</span>
+            <span class="n">probe1</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">hh</span><span class="p">,</span> <span class="n">mm</span><span class="p">,</span> <span class="n">ss</span><span class="p">,</span> <span class="n">us</span><span class="p">,</span> <span class="n">tz</span><span class="p">)</span>
+            <span class="n">trans</span> <span class="o">=</span> <span class="n">result</span> <span class="o">-</span> <span class="n">probe1</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_fold_seconds</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">trans</span><span class="o">.</span><span class="n">days</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">y</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">hh</span><span class="p">,</span> <span class="n">mm</span><span class="p">,</span> <span class="n">ss</span> <span class="o">=</span> <span class="n">converter</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="n">trans</span> <span class="o">//</span> <span class="n">timedelta</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))[:</span><span class="mi">6</span><span class="p">]</span>
+                <span class="n">probe2</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">hh</span><span class="p">,</span> <span class="n">mm</span><span class="p">,</span> <span class="n">ss</span><span class="p">,</span> <span class="n">us</span><span class="p">,</span> <span class="n">tz</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">probe2</span> <span class="o">==</span> <span class="n">result</span><span class="p">:</span>
+                    <span class="n">result</span><span class="o">.</span><span class="n">_fold</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="n">tz</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">tz</span><span class="o">.</span><span class="n">fromutc</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">fromtimestamp</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Construct a datetime from a POSIX timestamp (like time.time()).</span>
+
+<span class="sd">        A timezone info object may be passed in as well.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_check_tzinfo_arg</span><span class="p">(</span><span class="n">tz</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_fromtimestamp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">tz</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="n">tz</span><span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">utcfromtimestamp</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Construct a naive UTC datetime from a POSIX timestamp.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_fromtimestamp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">now</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="s2">&quot;Construct a datetime from time.time() and optional time zone info.&quot;</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">_time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">tz</span><span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">utcnow</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="s2">&quot;Construct a UTC datetime from time.time().&quot;</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">_time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">utcfromtimestamp</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">combine</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">date</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="s2">&quot;Construct a datetime from a given date and a given time.&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">_date_class</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;date argument must be a date instance&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">_time_class</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;time argument must be a time instance&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">tzinfo</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">tzinfo</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">tzinfo</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">date</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">date</span><span class="o">.</span><span class="n">day</span><span class="p">,</span>
+                   <span class="n">time</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">minute</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">second</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">microsecond</span><span class="p">,</span>
+                   <span class="n">tzinfo</span><span class="p">,</span> <span class="n">fold</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">fold</span><span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">fromisoformat</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">date_string</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Construct a datetime from the output of datetime.isoformat().&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">date_string</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;fromisoformat: argument must be str&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Split this at the separator</span>
+        <span class="n">dstr</span> <span class="o">=</span> <span class="n">date_string</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span>
+        <span class="n">tstr</span> <span class="o">=</span> <span class="n">date_string</span><span class="p">[</span><span class="mi">11</span><span class="p">:]</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">date_components</span> <span class="o">=</span> <span class="n">_parse_isoformat_date</span><span class="p">(</span><span class="n">dstr</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Invalid isoformat string: </span><span class="si">{</span><span class="n">date_string</span><span class="si">!r}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">tstr</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">time_components</span> <span class="o">=</span> <span class="n">_parse_isoformat_time</span><span class="p">(</span><span class="n">tstr</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Invalid isoformat string: </span><span class="si">{</span><span class="n">date_string</span><span class="si">!r}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">time_components</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">date_components</span> <span class="o">+</span> <span class="n">time_components</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">timetuple</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s2">&quot;Return local time tuple compatible with time.localtime().&quot;</span>
+        <span class="n">dst</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dst</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">dst</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">dst</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">elif</span> <span class="n">dst</span><span class="p">:</span>
+            <span class="n">dst</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">dst</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">return</span> <span class="n">_build_struct_time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">day</span><span class="p">,</span>
+                                  <span class="bp">self</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">minute</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">second</span><span class="p">,</span>
+                                  <span class="n">dst</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_mktime</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return integer POSIX timestamp.&quot;&quot;&quot;</span>
+        <span class="n">epoch</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">1970</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">max_fold_seconds</span> <span class="o">=</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">3600</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span> <span class="o">-</span> <span class="n">epoch</span><span class="p">)</span> <span class="o">//</span> <span class="n">timedelta</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">local</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
+            <span class="n">y</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">hh</span><span class="p">,</span> <span class="n">mm</span><span class="p">,</span> <span class="n">ss</span> <span class="o">=</span> <span class="n">_time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="n">u</span><span class="p">)[:</span><span class="mi">6</span><span class="p">]</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">hh</span><span class="p">,</span> <span class="n">mm</span><span class="p">,</span> <span class="n">ss</span><span class="p">)</span> <span class="o">-</span> <span class="n">epoch</span><span class="p">)</span> <span class="o">//</span> <span class="n">timedelta</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># Our goal is to solve t = local(u) for u.</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">local</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">t</span>
+        <span class="n">u1</span> <span class="o">=</span> <span class="n">t</span> <span class="o">-</span> <span class="n">a</span>
+        <span class="n">t1</span> <span class="o">=</span> <span class="n">local</span><span class="p">(</span><span class="n">u1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">t1</span> <span class="o">==</span> <span class="n">t</span><span class="p">:</span>
+            <span class="c1"># We found one solution, but it may not be the one we need.</span>
+            <span class="c1"># Look for an earlier solution (if `fold` is 0), or a</span>
+            <span class="c1"># later one (if `fold` is 1).</span>
+            <span class="n">u2</span> <span class="o">=</span> <span class="n">u1</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="n">max_fold_seconds</span><span class="p">,</span> <span class="n">max_fold_seconds</span><span class="p">)[</span><span class="bp">self</span><span class="o">.</span><span class="n">fold</span><span class="p">]</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="n">local</span><span class="p">(</span><span class="n">u2</span><span class="p">)</span> <span class="o">-</span> <span class="n">u2</span>
+            <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">u1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="n">t1</span> <span class="o">-</span> <span class="n">u1</span>
+            <span class="k">assert</span> <span class="n">a</span> <span class="o">!=</span> <span class="n">b</span>
+        <span class="n">u2</span> <span class="o">=</span> <span class="n">t</span> <span class="o">-</span> <span class="n">b</span>
+        <span class="n">t2</span> <span class="o">=</span> <span class="n">local</span><span class="p">(</span><span class="n">u2</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">t2</span> <span class="o">==</span> <span class="n">t</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">u2</span>
+        <span class="k">if</span> <span class="n">t1</span> <span class="o">==</span> <span class="n">t</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">u1</span>
+        <span class="c1"># We have found both offsets a and b, but neither t - a nor t - b is</span>
+        <span class="c1"># a solution.  This means t is in the gap.</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nb">max</span><span class="p">,</span> <span class="nb">min</span><span class="p">)[</span><span class="bp">self</span><span class="o">.</span><span class="n">fold</span><span class="p">](</span><span class="n">u1</span><span class="p">,</span> <span class="n">u2</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">timestamp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s2">&quot;Return POSIX timestamp as float&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tzinfo</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mktime</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">s</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">microsecond</span> <span class="o">/</span> <span class="mf">1e6</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="bp">self</span> <span class="o">-</span> <span class="n">_EPOCH</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">utctimetuple</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s2">&quot;Return UTC time tuple compatible with time.gmtime().&quot;</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">utcoffset</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">offset</span><span class="p">:</span>
+            <span class="bp">self</span> <span class="o">-=</span> <span class="n">offset</span>
+        <span class="n">y</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">day</span>
+        <span class="n">hh</span><span class="p">,</span> <span class="n">mm</span><span class="p">,</span> <span class="n">ss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">minute</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">second</span>
+        <span class="k">return</span> <span class="n">_build_struct_time</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">hh</span><span class="p">,</span> <span class="n">mm</span><span class="p">,</span> <span class="n">ss</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">date</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s2">&quot;Return the date part.&quot;</span>
+        <span class="k">return</span> <span class="n">date</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_year</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_month</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_day</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">time</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s2">&quot;Return the time part, with tzinfo None.&quot;</span>
+        <span class="k">return</span> <span class="n">time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">minute</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">second</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">microsecond</span><span class="p">,</span> <span class="n">fold</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fold</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">timetz</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s2">&quot;Return the time part, with same tzinfo.&quot;</span>
+        <span class="k">return</span> <span class="n">time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hour</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">minute</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">second</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">microsecond</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_tzinfo</span><span class="p">,</span> <span class="n">fold</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fold</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">replace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">year</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hour</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                <span class="n">minute</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">second</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">microsecond</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tzinfo</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="o">*</span><span class="p">,</span> <span class="n">fold</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a new datetime with new values for the specified fields.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">year</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">year</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">year</span>
+        <span class="k">if</span> <span class="n">month</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">month</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">month</span>
+        <span class="k">if</span> <span class="n">day</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">day</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">day</span>
+        <span class="k">if</span> <span class="n">hour</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">hour</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hour</span>
+        <span class="k">if</span> <span class="n">minute</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">minute</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">minute</span>
+        <span class="k">if</span> <span class="n">second</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">second</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">second</span>
+        <span class="k">if</span> <span class="n">microsecond</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">microsecond</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">microsecond</span>
+        <span class="k">if</span> <span class="n">tzinfo</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">tzinfo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tzinfo</span>
+        <span class="k">if</span> <span class="n">fold</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">fold</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fold</span>
+        <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">hour</span><span class="p">,</span> <span class="n">minute</span><span class="p">,</span> <span class="n">second</span><span class="p">,</span>
+                          <span class="n">microsecond</span><span class="p">,</span> <span class="n">tzinfo</span><span class="p">,</span> <span class="n">fold</span><span class="o">=</span><span class="n">fold</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_local_timezone</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tzinfo</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">ts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mktime</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ts</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span> <span class="o">-</span> <span class="n">_EPOCH</span><span class="p">)</span> <span class="o">//</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">localtm</span> <span class="o">=</span> <span class="n">_time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+        <span class="n">local</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="o">*</span><span class="n">localtm</span><span class="p">[:</span><span class="mi">6</span><span class="p">])</span>
+        <span class="c1"># Extract TZ data</span>
+        <span class="n">gmtoff</span> <span class="o">=</span> <span class="n">localtm</span><span class="o">.</span><span class="n">tm_gmtoff</span>
+        <span class="n">zone</span> <span class="o">=</span> <span class="n">localtm</span><span class="o">.</span><span class="n">tm_zone</span>
+        <span class="k">return</span> <span class="n">timezone</span><span class="p">(</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">gmtoff</span><span class="p">),</span> <span class="n">zone</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">astimezone</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">tz</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">tz</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_timezone</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tz</span><span class="p">,</span> <span class="n">tzinfo</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;tz argument must be an instance of tzinfo&quot;</span><span class="p">)</span>
+
+        <span class="n">mytz</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tzinfo</span>
+        <span class="k">if</span> <span class="n">mytz</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">mytz</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_local_timezone</span><span class="p">()</span>
+            <span class="n">myoffset</span> <span class="o">=</span> <span class="n">mytz</span><span class="o">.</span><span class="n">utcoffset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">myoffset</span> <span class="o">=</span> <span class="n">mytz</span><span class="o">.</span><span class="n">utcoffset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">myoffset</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">mytz</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">_local_timezone</span><span class="p">()</span>
+                <span class="n">myoffset</span> <span class="o">=</span> <span class="n">mytz</span><span class="o">.</span><span class="n">utcoffset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">tz</span> <span class="ow">is</span> <span class="n">mytz</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span>
+
+        <span class="c1"># Convert self to UTC, and attach the new time zone object.</span>
+        <span class="n">utc</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span> <span class="o">-</span> <span class="n">myoffset</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="n">tz</span><span class="p">)</span>
+
+        <span class="c1"># Convert from UTC to tz&#39;s local time.</span>
+        <span class="k">return</span> <span class="n">tz</span><span class="o">.</span><span class="n">fromutc</span><span class="p">(</span><span class="n">utc</span><span class="p">)</span>
+
+    <span class="c1"># Ways to produce a string.</span>
+
+    <span class="k">def</span> <span class="nf">ctime</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s2">&quot;Return ctime() style string.&quot;</span>
+        <span class="n">weekday</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">toordinal</span><span class="p">()</span> <span class="o">%</span> <span class="mi">7</span> <span class="ow">or</span> <span class="mi">7</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2"> </span><span class="si">%2d</span><span class="s2"> </span><span class="si">%02d</span><span class="s2">:</span><span class="si">%02d</span><span class="s2">:</span><span class="si">%02d</span><span class="s2"> </span><span class="si">%04d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span>
+            <span class="n">_DAYNAMES</span><span class="p">[</span><span class="n">weekday</span><span class="p">],</span>
+            <span class="n">_MONTHNAMES</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_month</span><span class="p">],</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_day</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_hour</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minute</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_second</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_year</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">isoformat</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">timespec</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the time formatted according to ISO.</span>
+
+<span class="sd">        The full format looks like &#39;YYYY-MM-DD HH:MM:SS.mmmmmm&#39;.</span>
+<span class="sd">        By default, the fractional part is omitted if self.microsecond == 0.</span>
+
+<span class="sd">        If self.tzinfo is not None, the UTC offset is also attached, giving</span>
+<span class="sd">        giving a full format of &#39;YYYY-MM-DD HH:MM:SS.mmmmmm+HH:MM&#39;.</span>
+
+<span class="sd">        Optional argument sep specifies the separator between date and</span>
+<span class="sd">        time, default &#39;T&#39;.</span>
+
+<span class="sd">        The optional argument timespec specifies the number of additional</span>
+<span class="sd">        terms of the time to include. Valid options are &#39;auto&#39;, &#39;hours&#39;,</span>
+<span class="sd">        &#39;minutes&#39;, &#39;seconds&#39;, &#39;milliseconds&#39; and &#39;microseconds&#39;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;</span><span class="si">%04d</span><span class="s2">-</span><span class="si">%02d</span><span class="s2">-</span><span class="si">%02d%c</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_year</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_month</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_day</span><span class="p">,</span> <span class="n">sep</span><span class="p">)</span> <span class="o">+</span>
+             <span class="n">_format_time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_hour</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minute</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_second</span><span class="p">,</span>
+                          <span class="bp">self</span><span class="o">.</span><span class="n">_microsecond</span><span class="p">,</span> <span class="n">timespec</span><span class="p">))</span>
+
+        <span class="n">off</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">utcoffset</span><span class="p">()</span>
+        <span class="n">tz</span> <span class="o">=</span> <span class="n">_format_offset</span><span class="p">(</span><span class="n">off</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">tz</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">+=</span> <span class="n">tz</span>
+
+        <span class="k">return</span> <span class="n">s</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert to formal string, for repr().&quot;&quot;&quot;</span>
+        <span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_year</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_month</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_day</span><span class="p">,</span>  <span class="c1"># These are never zero</span>
+             <span class="bp">self</span><span class="o">.</span><span class="n">_hour</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minute</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_second</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_microsecond</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">L</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">L</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">L</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">L</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.</span><span class="si">%s</span><span class="s2">(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__module__</span><span class="p">,</span>
+                           <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__qualname__</span><span class="p">,</span>
+                           <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">L</span><span class="p">)))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tzinfo</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="n">s</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:]</span> <span class="o">==</span> <span class="s2">&quot;)&quot;</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;, tzinfo=</span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tzinfo</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fold</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="n">s</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:]</span> <span class="o">==</span> <span class="s2">&quot;)&quot;</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;, fold=1)&quot;</span>
+        <span class="k">return</span> <span class="n">s</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="s2">&quot;Convert to string, for str().&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">strptime</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">date_string</span><span class="p">,</span> <span class="nb">format</span><span class="p">):</span>
+        <span class="s1">&#39;string, format -&gt; new datetime parsed from a string (like time.strptime()).&#39;</span>
+        <span class="kn">import</span> <span class="nn">_strptime</span>
+        <span class="k">return</span> <span class="n">_strptime</span><span class="o">.</span><span class="n">_strptime_datetime</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">date_string</span><span class="p">,</span> <span class="nb">format</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">utcoffset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the timezone offset as timedelta positive east of UTC (negative west of</span>
+<span class="sd">        UTC).&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tzinfo</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tzinfo</span><span class="o">.</span><span class="n">utcoffset</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">_check_utc_offset</span><span class="p">(</span><span class="s2">&quot;utcoffset&quot;</span><span class="p">,</span> <span class="n">offset</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">offset</span>
+
+    <span class="k">def</span> <span class="nf">tzname</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the timezone name.</span>
+
+<span class="sd">        Note that the name is 100% informational -- there&#39;s no requirement that</span>
+<span class="sd">        it mean anything in particular. For example, &quot;GMT&quot;, &quot;UTC&quot;, &quot;-500&quot;,</span>
+<span class="sd">        &quot;-5:00&quot;, &quot;EDT&quot;, &quot;US/Eastern&quot;, &quot;America/New York&quot; are all valid replies.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tzinfo</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tzinfo</span><span class="o">.</span><span class="n">tzname</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">_check_tzname</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">name</span>
+
+    <span class="k">def</span> <span class="nf">dst</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return 0 if DST is not in effect, or the DST offset (as timedelta</span>
+<span class="sd">        positive eastward) if DST is in effect.</span>
+
+<span class="sd">        This is purely informational; the DST offset has already been added to</span>
+<span class="sd">        the UTC offset returned by utcoffset() if applicable, so there&#39;s no</span>
+<span class="sd">        need to consult dst() unless you&#39;re interested in displaying the DST</span>
+<span class="sd">        info.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tzinfo</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tzinfo</span><span class="o">.</span><span class="n">dst</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">_check_utc_offset</span><span class="p">(</span><span class="s2">&quot;dst&quot;</span><span class="p">,</span> <span class="n">offset</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">offset</span>
+
+    <span class="c1"># Comparisons of datetime objects with other.</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">datetime</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmp</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">allow_mixed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">date</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">NotImplemented</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="fm">__le__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">datetime</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmp</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">date</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">NotImplemented</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">_cmperror</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">datetime</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmp</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">date</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">NotImplemented</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">_cmperror</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__ge__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">datetime</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmp</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">date</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">NotImplemented</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">_cmperror</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">datetime</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cmp</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">date</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">NotImplemented</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">_cmperror</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_cmp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">allow_mixed</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">datetime</span><span class="p">)</span>
+        <span class="n">mytz</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tzinfo</span>
+        <span class="n">ottz</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">_tzinfo</span>
+        <span class="n">myoff</span> <span class="o">=</span> <span class="n">otoff</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">if</span> <span class="n">mytz</span> <span class="ow">is</span> <span class="n">ottz</span><span class="p">:</span>
+            <span class="n">base_compare</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">myoff</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">utcoffset</span><span class="p">()</span>
+            <span class="n">otoff</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">utcoffset</span><span class="p">()</span>
+            <span class="c1"># Assume that allow_mixed means that we are called from __eq__</span>
+            <span class="k">if</span> <span class="n">allow_mixed</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">myoff</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">fold</span><span class="o">=</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">fold</span><span class="p">)</span><span class="o">.</span><span class="n">utcoffset</span><span class="p">():</span>
+                    <span class="k">return</span> <span class="mi">2</span>
+                <span class="k">if</span> <span class="n">otoff</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">fold</span><span class="o">=</span><span class="ow">not</span> <span class="n">other</span><span class="o">.</span><span class="n">fold</span><span class="p">)</span><span class="o">.</span><span class="n">utcoffset</span><span class="p">():</span>
+                    <span class="k">return</span> <span class="mi">2</span>
+            <span class="n">base_compare</span> <span class="o">=</span> <span class="n">myoff</span> <span class="o">==</span> <span class="n">otoff</span>
+
+        <span class="k">if</span> <span class="n">base_compare</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">_cmp</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_year</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_month</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_day</span><span class="p">,</span>
+                         <span class="bp">self</span><span class="o">.</span><span class="n">_hour</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minute</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_second</span><span class="p">,</span>
+                         <span class="bp">self</span><span class="o">.</span><span class="n">_microsecond</span><span class="p">),</span>
+                        <span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">_year</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">_month</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">_day</span><span class="p">,</span>
+                         <span class="n">other</span><span class="o">.</span><span class="n">_hour</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">_minute</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">_second</span><span class="p">,</span>
+                         <span class="n">other</span><span class="o">.</span><span class="n">_microsecond</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">myoff</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">otoff</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">allow_mixed</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mi">2</span> <span class="c1"># arbitrary non-zero value</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;cannot compare naive and aware datetimes&quot;</span><span class="p">)</span>
+        <span class="c1"># XXX What follows could be done more efficiently...</span>
+        <span class="n">diff</span> <span class="o">=</span> <span class="bp">self</span> <span class="o">-</span> <span class="n">other</span>     <span class="c1"># this will take offsets into account</span>
+        <span class="k">if</span> <span class="n">diff</span><span class="o">.</span><span class="n">days</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">return</span> <span class="n">diff</span> <span class="ow">and</span> <span class="mi">1</span> <span class="ow">or</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="s2">&quot;Add a datetime and a timedelta.&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">NotImplemented</span>
+        <span class="n">delta</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">toordinal</span><span class="p">(),</span>
+                          <span class="n">hours</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_hour</span><span class="p">,</span>
+                          <span class="n">minutes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_minute</span><span class="p">,</span>
+                          <span class="n">seconds</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_second</span><span class="p">,</span>
+                          <span class="n">microseconds</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_microsecond</span><span class="p">)</span>
+        <span class="n">delta</span> <span class="o">+=</span> <span class="n">other</span>
+        <span class="n">hour</span><span class="p">,</span> <span class="n">rem</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">delta</span><span class="o">.</span><span class="n">seconds</span><span class="p">,</span> <span class="mi">3600</span><span class="p">)</span>
+        <span class="n">minute</span><span class="p">,</span> <span class="n">second</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">rem</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+        <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">delta</span><span class="o">.</span><span class="n">days</span> <span class="o">&lt;=</span> <span class="n">_MAXORDINAL</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">combine</span><span class="p">(</span><span class="n">date</span><span class="o">.</span><span class="n">fromordinal</span><span class="p">(</span><span class="n">delta</span><span class="o">.</span><span class="n">days</span><span class="p">),</span>
+                                      <span class="n">time</span><span class="p">(</span><span class="n">hour</span><span class="p">,</span> <span class="n">minute</span><span class="p">,</span> <span class="n">second</span><span class="p">,</span>
+                                           <span class="n">delta</span><span class="o">.</span><span class="n">microseconds</span><span class="p">,</span>
+                                           <span class="n">tzinfo</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_tzinfo</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="ne">OverflowError</span><span class="p">(</span><span class="s2">&quot;result out of range&quot;</span><span class="p">)</span>
+
+    <span class="fm">__radd__</span> <span class="o">=</span> <span class="fm">__add__</span>
+
+    <span class="k">def</span> <span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="s2">&quot;Subtract two datetimes, or a datetime and a timedelta.&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">datetime</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">self</span> <span class="o">+</span> <span class="o">-</span><span class="n">other</span>
+            <span class="k">return</span> <span class="bp">NotImplemented</span>
+
+        <span class="n">days1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">toordinal</span><span class="p">()</span>
+        <span class="n">days2</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">toordinal</span><span class="p">()</span>
+        <span class="n">secs1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_second</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minute</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hour</span> <span class="o">*</span> <span class="mi">3600</span>
+        <span class="n">secs2</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">_second</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">_minute</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">_hour</span> <span class="o">*</span> <span class="mi">3600</span>
+        <span class="n">base</span> <span class="o">=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days1</span> <span class="o">-</span> <span class="n">days2</span><span class="p">,</span>
+                         <span class="n">secs1</span> <span class="o">-</span> <span class="n">secs2</span><span class="p">,</span>
+                         <span class="bp">self</span><span class="o">.</span><span class="n">_microsecond</span> <span class="o">-</span> <span class="n">other</span><span class="o">.</span><span class="n">_microsecond</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tzinfo</span> <span class="ow">is</span> <span class="n">other</span><span class="o">.</span><span class="n">_tzinfo</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">base</span>
+        <span class="n">myoff</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">utcoffset</span><span class="p">()</span>
+        <span class="n">otoff</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">utcoffset</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">myoff</span> <span class="o">==</span> <span class="n">otoff</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">base</span>
+        <span class="k">if</span> <span class="n">myoff</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">otoff</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;cannot mix naive and timezone-aware time&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">base</span> <span class="o">+</span> <span class="n">otoff</span> <span class="o">-</span> <span class="n">myoff</span>
+
+    <span class="k">def</span> <span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hashcode</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fold</span><span class="p">:</span>
+                <span class="n">t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">fold</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">t</span> <span class="o">=</span> <span class="bp">self</span>
+            <span class="n">tzoff</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">utcoffset</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">tzoff</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_hashcode</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">_getstate</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">days</span> <span class="o">=</span> <span class="n">_ymd2ord</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">day</span><span class="p">)</span>
+                <span class="n">seconds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hour</span> <span class="o">*</span> <span class="mi">3600</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">minute</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">second</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_hashcode</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="p">,</span> <span class="n">seconds</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">microsecond</span><span class="p">)</span> <span class="o">-</span> <span class="n">tzoff</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hashcode</span>
+
+    <span class="c1"># Pickle support.</span>
+
+    <span class="k">def</span> <span class="nf">_getstate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">yhi</span><span class="p">,</span> <span class="n">ylo</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_year</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+        <span class="n">us2</span><span class="p">,</span> <span class="n">us3</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_microsecond</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+        <span class="n">us1</span><span class="p">,</span> <span class="n">us2</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">us2</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_month</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fold</span> <span class="ow">and</span> <span class="n">protocol</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">m</span> <span class="o">+=</span> <span class="mi">128</span>
+        <span class="n">basestate</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">([</span><span class="n">yhi</span><span class="p">,</span> <span class="n">ylo</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_day</span><span class="p">,</span>
+                           <span class="bp">self</span><span class="o">.</span><span class="n">_hour</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_minute</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_second</span><span class="p">,</span>
+                           <span class="n">us1</span><span class="p">,</span> <span class="n">us2</span><span class="p">,</span> <span class="n">us3</span><span class="p">])</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tzinfo</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">basestate</span><span class="p">,)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">basestate</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tzinfo</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__setstate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">string</span><span class="p">,</span> <span class="n">tzinfo</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">tzinfo</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tzinfo</span><span class="p">,</span> <span class="n">_tzinfo_class</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;bad tzinfo state arg&quot;</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">yhi</span><span class="p">,</span> <span class="n">ylo</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_day</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hour</span><span class="p">,</span>
+         <span class="bp">self</span><span class="o">.</span><span class="n">_minute</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_second</span><span class="p">,</span> <span class="n">us1</span><span class="p">,</span> <span class="n">us2</span><span class="p">,</span> <span class="n">us3</span><span class="p">)</span> <span class="o">=</span> <span class="n">string</span>
+        <span class="k">if</span> <span class="n">m</span> <span class="o">&gt;</span> <span class="mi">127</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_fold</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_month</span> <span class="o">=</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">128</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_fold</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_month</span> <span class="o">=</span> <span class="n">m</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_year</span> <span class="o">=</span> <span class="n">yhi</span> <span class="o">*</span> <span class="mi">256</span> <span class="o">+</span> <span class="n">ylo</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_microsecond</span> <span class="o">=</span> <span class="p">(((</span><span class="n">us1</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">|</span> <span class="n">us2</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">|</span> <span class="n">us3</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tzinfo</span> <span class="o">=</span> <span class="n">tzinfo</span>
+
+    <span class="k">def</span> <span class="nf">__reduce_ex__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">protocol</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getstate</span><span class="p">(</span><span class="n">protocol</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">__reduce__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__reduce_ex__</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+
+      <div class="class">
+          <h3>Ancestors (in MRO)</h3>
+          <ul class="class_list">
+          <li><a href="/datetime.date.ext">datetime.date</a></li>
+          </ul>
+          <h3>Class variables</h3>
+            <div class="item">
+            <p id="tegridymidi.files_helpers.datetime.day" class="name">var <span class="ident">day</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="tegridymidi.files_helpers.datetime.fold" class="name">var <span class="ident">fold</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="tegridymidi.files_helpers.datetime.hour" class="name">var <span class="ident">hour</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="tegridymidi.files_helpers.datetime.max" class="name">var <span class="ident">max</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="tegridymidi.files_helpers.datetime.microsecond" class="name">var <span class="ident">microsecond</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="tegridymidi.files_helpers.datetime.min" class="name">var <span class="ident">min</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="tegridymidi.files_helpers.datetime.minute" class="name">var <span class="ident">minute</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="tegridymidi.files_helpers.datetime.month" class="name">var <span class="ident">month</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="tegridymidi.files_helpers.datetime.resolution" class="name">var <span class="ident">resolution</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="tegridymidi.files_helpers.datetime.second" class="name">var <span class="ident">second</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="tegridymidi.files_helpers.datetime.tzinfo" class="name">var <span class="ident">tzinfo</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="tegridymidi.files_helpers.datetime.year" class="name">var <span class="ident">year</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+          <h3>Methods</h3>
+            
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.datetime.astimezone">
+    <p>def <span class="ident">astimezone</span>(</p><p>...)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>tz -&gt; convert to local time in new timezone tz</p></div>
+  <div class="source_cont">
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.datetime.combine">
+    <p>def <span class="ident">combine</span>(</p><p>...)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>date, time -&gt; datetime with same date and time fields</p></div>
+  <div class="source_cont">
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.datetime.ctime">
+    <p>def <span class="ident">ctime</span>(</p><p>...)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Return ctime() style string.</p></div>
+  <div class="source_cont">
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.datetime.date">
+    <p>def <span class="ident">date</span>(</p><p>...)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Return date object with same year, month and day.</p></div>
+  <div class="source_cont">
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.datetime.dst">
+    <p>def <span class="ident">dst</span>(</p><p>...)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Return self.tzinfo.dst(self).</p></div>
+  <div class="source_cont">
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.datetime.fromisocalendar">
+    <p>def <span class="ident">fromisocalendar</span>(</p><p>...)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>int, int, int -&gt; Construct a date from the ISO year, week number and weekday.</p>
+<p>This is the inverse of the date.isocalendar() function</p></div>
+  <div class="source_cont">
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.datetime.fromisoformat">
+    <p>def <span class="ident">fromisoformat</span>(</p><p>...)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>string -&gt; datetime from datetime.isoformat() output</p></div>
+  <div class="source_cont">
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.datetime.fromordinal">
+    <p>def <span class="ident">fromordinal</span>(</p><p>...)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>int -&gt; date corresponding to a proleptic Gregorian ordinal.</p></div>
+  <div class="source_cont">
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.datetime.fromtimestamp">
+    <p>def <span class="ident">fromtimestamp</span>(</p><p>...)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>timestamp[, tz] -&gt; tz's local time from POSIX timestamp.</p></div>
+  <div class="source_cont">
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.datetime.isocalendar">
+    <p>def <span class="ident">isocalendar</span>(</p><p>...)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Return a named tuple containing ISO year, week number, and weekday.</p></div>
+  <div class="source_cont">
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.datetime.isoformat">
+    <p>def <span class="ident">isoformat</span>(</p><p>...)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>[sep] -&gt; string in ISO 8601 format, YYYY-MM-DDT[HH[:MM[:SS[.mmm[uuu]]]]][+HH:MM].
+sep is used to separate the year from the time, and defaults to 'T'.
+The optional argument timespec specifies the number of additional terms
+of the time to include. Valid options are 'auto', 'hours', 'minutes',
+'seconds', 'milliseconds' and 'microseconds'.</p></div>
+  <div class="source_cont">
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.datetime.isoweekday">
+    <p>def <span class="ident">isoweekday</span>(</p><p>...)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Return the day of the week represented by the date.
+Monday == 1 &hellip; Sunday == 7</p></div>
+  <div class="source_cont">
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.datetime.now">
+    <p>def <span class="ident">now</span>(</p><p>tz=None)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Returns new datetime object representing current time local to tz.</p>
+<p>tz
+    Timezone object.</p>
+<p>If no tz is specified, uses local timezone.</p></div>
+  <div class="source_cont">
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.datetime.replace">
+    <p>def <span class="ident">replace</span>(</p><p>...)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Return datetime with new specified fields.</p></div>
+  <div class="source_cont">
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.datetime.strftime">
+    <p>def <span class="ident">strftime</span>(</p><p>...)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>format -&gt; strftime() style string.</p></div>
+  <div class="source_cont">
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.datetime.strptime">
+    <p>def <span class="ident">strptime</span>(</p><p>...)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>string, format -&gt; new datetime parsed from a string (like time.strptime()).</p></div>
+  <div class="source_cont">
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.datetime.time">
+    <p>def <span class="ident">time</span>(</p><p>...)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Return time object with same time but with tzinfo=None.</p></div>
+  <div class="source_cont">
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.datetime.timestamp">
+    <p>def <span class="ident">timestamp</span>(</p><p>...)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Return POSIX timestamp as float.</p></div>
+  <div class="source_cont">
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.datetime.timetuple">
+    <p>def <span class="ident">timetuple</span>(</p><p>...)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Return time tuple, compatible with time.localtime().</p></div>
+  <div class="source_cont">
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.datetime.timetz">
+    <p>def <span class="ident">timetz</span>(</p><p>...)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Return time object with same time and tzinfo.</p></div>
+  <div class="source_cont">
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.datetime.today">
+    <p>def <span class="ident">today</span>(</p><p>...)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Current date or datetime:  same as self.<strong>class</strong>.fromtimestamp(time.time()).</p></div>
+  <div class="source_cont">
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.datetime.toordinal">
+    <p>def <span class="ident">toordinal</span>(</p><p>...)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Return proleptic Gregorian ordinal.  January 1 of year 1 is day 1.</p></div>
+  <div class="source_cont">
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.datetime.tzname">
+    <p>def <span class="ident">tzname</span>(</p><p>...)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Return self.tzinfo.tzname(self).</p></div>
+  <div class="source_cont">
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.datetime.utcfromtimestamp">
+    <p>def <span class="ident">utcfromtimestamp</span>(</p><p>...)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Construct a naive UTC datetime from a POSIX timestamp.</p></div>
+  <div class="source_cont">
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.datetime.utcnow">
+    <p>def <span class="ident">utcnow</span>(</p><p>...)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Return a new datetime representing UTC day and time.</p></div>
+  <div class="source_cont">
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.datetime.utcoffset">
+    <p>def <span class="ident">utcoffset</span>(</p><p>...)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Return self.tzinfo.utcoffset(self).</p></div>
+  <div class="source_cont">
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.datetime.utctimetuple">
+    <p>def <span class="ident">utctimetuple</span>(</p><p>...)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Return UTC time tuple, compatible with time.localtime().</p></div>
+  <div class="source_cont">
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="tegridymidi.files_helpers.datetime.weekday">
+    <p>def <span class="ident">weekday</span>(</p><p>...)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Return the day of the week represented by the date.
+Monday == 0 &hellip; Sunday == 6</p></div>
+  <div class="source_cont">
+</div>
+
+  </div>
+  
+      </div>
+      </div>
+
+  </section>
+</article>
+  <div class="clear"> </div>
+  <footer id="footer">
+    <p>
+      Generated by <a href="https://github.com/timothycrosley/pdocs">pdocs 1.2.0</a>
+    </p>
+  </footer>
+</div>
+</body>
+</html>
