@@ -1789,6 +1789,83 @@ def delta_score_to_abs_score(delta_score_notes,
 
 #===============================================================================
 
+def ms_escore_notes2midi(ms_escore_notes,
+                          output_signature = 'Tegridy TMIDI Module', 
+                          track_name = 'Composition Track',
+                          list_of_MIDI_patches = [0, 24, 32, 40, 42, 46, 56, 71, 73, 0, 0, 0, 0, 0, 0, 0],
+                          output_file_name = 'TMIDI-Composition',
+                          text_encoding='ISO-8859-1',
+                          timings_multiplier=1,
+                          verbose=True
+                          ):
+
+    '''Milisecond SONG to MIDI Converter
+     
+    Input: Input ms SONG in TMIDI ms SONG/MIDI.py ms Score format
+           Output MIDI Track 0 name / MIDI Signature
+           Output MIDI Track 1 name / Composition track name
+           List of 16 MIDI patch numbers for output MIDI. Def. is MuseNet compatible patches.
+           Output file name w/o .mid extension.
+           Optional text encoding if you are working with text_events/lyrics. This is especially useful for Karaoke. Please note that anything but ISO-8859-1 is a non-standard way of encoding text_events according to MIDI specs.
+           Optional timings multiplier
+           Optional verbose output
+
+    Output: MIDI File
+            Detailed MIDI stats
+
+    Project Los Angeles
+    Tegridy Code 2024'''                                  
+    
+    if verbose:
+        print('Converting to MIDI. Please stand-by...')
+
+    output_header = [1000,
+                    [['set_tempo', 0, 1000000],
+                     ['time_signature', 0, 4, 2, 24, 8],
+                     ['track_name', 0, bytes(output_signature, text_encoding)]]]
+
+    patch_list = [['patch_change', 0, 0, list_of_MIDI_patches[0]], 
+                    ['patch_change', 0, 1, list_of_MIDI_patches[1]],
+                    ['patch_change', 0, 2, list_of_MIDI_patches[2]],
+                    ['patch_change', 0, 3, list_of_MIDI_patches[3]],
+                    ['patch_change', 0, 4, list_of_MIDI_patches[4]],
+                    ['patch_change', 0, 5, list_of_MIDI_patches[5]],
+                    ['patch_change', 0, 6, list_of_MIDI_patches[6]],
+                    ['patch_change', 0, 7, list_of_MIDI_patches[7]],
+                    ['patch_change', 0, 8, list_of_MIDI_patches[8]],
+                    ['patch_change', 0, 9, list_of_MIDI_patches[9]],
+                    ['patch_change', 0, 10, list_of_MIDI_patches[10]],
+                    ['patch_change', 0, 11, list_of_MIDI_patches[11]],
+                    ['patch_change', 0, 12, list_of_MIDI_patches[12]],
+                    ['patch_change', 0, 13, list_of_MIDI_patches[13]],
+                    ['patch_change', 0, 14, list_of_MIDI_patches[14]],
+                    ['patch_change', 0, 15, list_of_MIDI_patches[15]],
+                    ['track_name', 0, bytes(track_name, text_encoding)]]
+
+    SONG = copy.deepcopy(ms_escore_notes)
+
+    if timings_multiplier != 1:
+      for S in SONG:
+        S[1] = S[1] * timings_multiplier
+        if S[0] == 'note':
+          S[2] = S[2] * timings_multiplier
+
+    output = output_header + [patch_list + SONG]
+
+    midi_data = score2midi(output, text_encoding)
+    detailed_MIDI_stats = score2stats(output)
+
+    with open(output_file_name + '.mid', 'wb') as midi_file:
+        midi_file.write(midi_data)
+        midi_file.close()
+    
+    if verbose:    
+        print('Done! Enjoy! :)')
+    
+    return detailed_MIDI_stats
+
+#===============================================================================
+
 __all__ = [name for name in globals() if not name.startswith('_')]
           
 #=======================================================================================================
