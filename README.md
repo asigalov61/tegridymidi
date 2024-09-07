@@ -24,6 +24,25 @@ pip install tegridymidi[cuda]
 
 ***
 
+# Modules imports
+
+## All modules functions
+
+```sh
+from tegridymidi import *
+```
+
+## Individual modules functions
+
+```sh
+from tegridymidi import processors
+from tegridymidi import chords
+from tegridymidi import misc
+# etc..
+```
+
+***
+
 # Quick Start Guide
 
 ## [Example code snippets and scripts](https://github.com/asigalov61/tegridymidi/tree/main/tegridymidi/examples)
