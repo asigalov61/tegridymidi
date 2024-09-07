@@ -52,6 +52,7 @@ content-type = "text/markdown"
 
 [project.urls]
 Homepage = "https://github.com/asigalov61/tegridymidi"
+Examples = "https://github.com/asigalov61/tegridymidi/tegridymidi/examples"
 Documentation = "https://github.com/asigalov61/tegridymidi/docs"
 Repository = "https://github.com/asigalov61/tegridymidi"
 Issues = "https://github.com/asigalov61/tegridymidi/issues"
