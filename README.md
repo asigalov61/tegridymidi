@@ -6,16 +6,16 @@
 
 ***
 
-## Installation
+# Installation
 
-### CPU
+## CPU
 
 ```sh
 sudo apt-get install fluidsynth
 pip install tegridymidi
 ```
 
-### GPU
+## GPU
 
 ```sh
 sudo apt-get install fluidsynth
