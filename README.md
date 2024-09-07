@@ -6,14 +6,6 @@
 
 ***
 
-## Features
-
-- Read and write MIDI files
-- Manipulate MIDI data
-- Integrate with FluidSynth for MIDI playback
-
-***
-
 ## Installation
 
 ### CPU
