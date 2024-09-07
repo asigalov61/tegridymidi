@@ -9,7 +9,6 @@ from collections import Counter
 from itertools import combinations, groupby
 
 from tegridymidi.processors import chordify_score
-from tegridymidi.misc import find_closest_tone, tone_type
 from tegridymidi.helpers import find_exact_match_variable_length, lists_intersections, lists_sym_differences
 from tegridymidi.constants import ALL_CHORDS, ALL_CHORDS_FULL, ALL_CHORDS_FILTERED, ALL_CHORDS_SORTED
 from tegridymidi.constants import WHITE_NOTES, BLACK_NOTES, CHORDS_TYPES
@@ -22,6 +21,31 @@ def bad_chord(chord):
       bad = True
     
     return bad
+
+#===============================================================================
+
+def find_closest_tone(tones, tone):
+  return min(tones, key=lambda x:abs(x-tone))
+
+#===============================================================================
+
+def tone_type(tone, 
+              return_tone_type_index=True
+              ):
+
+  tone = tone % 12
+
+  if tone in BLACK_NOTES:
+    if return_tone_type_index:
+      return CHORDS_TYPES.index('BLACK')
+    else:
+      return "BLACK"
+
+  else:
+    if return_tone_type_index:
+      return CHORDS_TYPES.index('WHITE')
+    else:
+      return "WHITE"
 
 #===============================================================================
 
