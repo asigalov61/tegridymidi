@@ -25,7 +25,7 @@ setup(
     packages=find_packages(),  # Automatically find and include all packages
     include_package_data=True,
     package_data={
-        'tegridymidi': ['sample_midis/*'],
+        'tegridymidi': ['sample_midis/*', 'docs/*'],
     },
     install_requires=[
         'tqdm',
@@ -59,5 +59,9 @@ setup(
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12"
+    ],
+    data_files=[
+        ('docs', ['docs/*']),
+        ('sample_midis', ['sample_midis/*'])
     ],
 )
