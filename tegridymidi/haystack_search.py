@@ -1,23 +1,21 @@
-"""
-Needle in a haystack search
-
-Original source code is located here:
-https://github.com/agapow/py-gsp/blob/master/gsp/motifsearch.py
-"""
-
-"""
-A modifiable GSP algorithm.
-"""
+#=======================================================================================================
+# Tegridy MIDI Haystack Search module
+#=======================================================================================================
+#
+# Needle in a haystack search
+#
+# Original source code is located here:
+# https://github.com/agapow/py-gsp/blob/master/gsp/motifsearch.py
+#
+# A modifiable GSP algorithm.
+#
+#===============================================================================
 
 __version__ = '0.1'
-
-
-### IMPORTS
 
 ### CONSTANTS & DEFINES
 
 PP_INDENT = 3
-
 
 ### CODE ###
 
@@ -140,6 +138,8 @@ class GspSearch (object):
 			
 ### END ###
 
+#===============================================================================
+
 __version__ = '0.1'
 
 ### CONSTANTS & DEFINES
@@ -186,5 +186,10 @@ def HaystackSearch(needle, haystack):
 			return i - n + 1
 	return -1
 
+#===============================================================================
 
 __all__ = [name for name in globals() if not name.startswith('_')]
+          
+#=======================================================================================================
+# This is the end of haystack_search module
+#=======================================================================================================

@@ -13,14 +13,14 @@
 #
 # Project Los Angeles
 # Tegridy Code 2024
-
+#
 #===================================================================================================================
-
+#
 # Critical dependencies
 #
 # !pip install torch
 # !pip install einops
-
+#
 #===================================================================================================================
 
 from functools import partial
@@ -37,6 +37,8 @@ from packaging import version
 from dataclasses import dataclass
 
 from einops import rearrange, repeat
+
+#===============================================================================
 
 # constants
 
@@ -2464,8 +2466,10 @@ class XTransformer(nn.Module):
         out = self.decoder(tgt, context = enc, context_mask = mask)
         return out
 
-#===============================================================================================
+#===============================================================================
 
 __all__ = [name for name in globals() if not name.startswith('_')]
 
+#===============================================================================================
+# This is the end of x_transformer module
 #===============================================================================================

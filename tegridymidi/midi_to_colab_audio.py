@@ -32,7 +32,21 @@ r'''#===========================================================================
 #
 # display(Audio(raw_audio, rate=16000, normalize=False))
 #
-#===================================================================================================================
+#===============================================================================
+'''
+
+#===============================================================================
+
+import sys, struct, copy
+import numpy as np
+import wave
+from ctypes import *
+from ctypes.util import find_library
+import os
+
+#===============================================================================
+
+'''
 #! /usr/bin/python3
 # unsupported 20091104 ...
 #     ['set_sequence_number', dtime, sequence]
@@ -154,8 +168,8 @@ event, with a duration:
         itrack += 1
 
 '''
+#===============================================================================
 
-import sys, struct, copy
 # sys.stdout = os.fdopen(sys.stdout.fileno(), 'wb')
 Version = '6.7'
 VersionDate = '20201120'
@@ -1790,10 +1804,6 @@ def _encode(events_lol, unknown_callback=None, never_add_eot=False,
 ================================================================================
 """
 
-from ctypes import *
-from ctypes.util import find_library
-import os
-
 # A short circuited or expression to find the FluidSynth library
 # (mostly needed for Windows distributions of libfluidsynth supplied with QSynth)
 
@@ -2785,8 +2795,6 @@ class Synth:
     def player_set_tempo(self, tempo_type, tempo):
         return fluid_player_set_tempo(self.player, tempo_type, tempo)
 
-
-
 class Sequencer:
     def __init__(self, time_scale=1000, use_system_timer=True):
         """Create new sequencer object to control and schedule timing of midi events
@@ -2871,9 +2879,6 @@ def raw_audio_string(data):
     return (data.astype(numpy.int16)).tostring()
 
 #===============================================================================
-
-import numpy as np
-import wave
 
 def midi_opus_to_colab_audio(midi_opus, 
                               soundfont_path='/usr/share/sounds/sf2/FluidR3_GM.sf2', 
@@ -2972,6 +2977,8 @@ def midi_opus_to_colab_audio(midi_opus,
   
     else:
       return None
+
+#===============================================================================
 
 def midi_to_colab_audio(midi_file, 
                         soundfont_path='/usr/share/sounds/sf2/FluidR3_GM.sf2', 
@@ -3087,6 +3094,10 @@ def midi_to_colab_audio(midi_file,
     else:
       return None
 
+#===============================================================================
+
 __all__ = [name for name in globals() if not name.startswith('_')]
     
+#===================================================================================================================
+# This is the end of midi_to_colab_audio module
 #===================================================================================================================

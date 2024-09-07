@@ -5,8 +5,9 @@
 import os
 from datetime import datetime
 import pickle
+import hashlib
 
-#=======================================================================================================
+#===============================================================================
 
 def build_directory_tree(root_dir, indent='', exclude_hidden=True, is_root=True):
     lines = []
@@ -27,7 +28,7 @@ def build_directory_tree(root_dir, indent='', exclude_hidden=True, is_root=True)
             lines.extend(build_directory_tree(path, new_indent, exclude_hidden, is_root=False))
     return lines
 
-#=======================================================================================================
+#===============================================================================
 
 def print_directory_tree(root_dir, exclude_hidden=True, output_file=None):
     lines = build_directory_tree(root_dir, exclude_hidden=exclude_hidden)
@@ -39,9 +40,9 @@ def print_directory_tree(root_dir, exclude_hidden=True, output_file=None):
         for line in lines:
             print(line)
 
-###################################################################################
+#===============================================================================
 
-def Tegridy_File_Time_Stamp(input_file_name='File_Created_on_', ext = ''):
+def file_time_stamp(input_file_name='File_Created_on_', ext = ''):
 
   '''Tegridy File Time Stamp
      
@@ -65,9 +66,9 @@ def Tegridy_File_Time_Stamp(input_file_name='File_Created_on_', ext = ''):
 
   return(fname)
 
-###################################################################################
+#===============================================================================
 
-def Tegridy_Any_Pickle_File_Writer(Data, input_file_name='TMIDI_Pickle_File'):
+def pickle_file_writer(Data, input_file_name='TMIDI_Pickle_File'):
 
   '''Tegridy Pickle File Writer
      
@@ -96,9 +97,9 @@ def Tegridy_Any_Pickle_File_Writer(Data, input_file_name='TMIDI_Pickle_File'):
   print('Dataset was saved as:', full_path_to_output_dataset_to)
   print('Task complete. Enjoy! :)')
 
-###################################################################################
+#===============================================================================
 
-def Tegridy_Any_Pickle_File_Reader(input_file_name='TMIDI_Pickle_File', ext='.pickle', verbose=True):
+def pitckle_file_reader(input_file_name='TMIDI_Pickle_File', ext='.pickle', verbose=True):
 
   '''Tegridy Pickle File Loader
      
@@ -128,7 +129,44 @@ def Tegridy_Any_Pickle_File_Reader(input_file_name='TMIDI_Pickle_File', ext='.pi
 
   return content
 
-###################################################################################
+#===============================================================================
+
+def md5_hash(file_path_or_data=None, original_md5_hash=None):
+
+  if type(file_path_or_data) == str:
+
+    with open(file_path_or_data, 'rb') as file_to_check:
+      data = file_to_check.read()
+      
+      if data:
+        md5 = hashlib.md5(data).hexdigest()
+
+  else:
+    if file_path_or_data:
+      md5 = hashlib.md5(file_path_or_data).hexdigest()
+
+  if md5:
+
+    if original_md5_hash:
+
+      if md5 == original_md5_hash:
+        check = True
+      else:
+        check = False
+        
+    else:
+      check = None
+
+    return [md5, check]
+
+  else:
+
+    md5 = None
+    check = None
+
+    return [md5, check]
+
+#===============================================================================
 
 __all__ = [name for name in globals() if not name.startswith('_')]
           

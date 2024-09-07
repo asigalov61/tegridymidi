@@ -36,11 +36,13 @@ r'''############################################################################
 ################################################################################
 '''
 
-################################################################################
+#===============================================================================
 
-import sys, struct, copy
+import sys, struct, copy, math
+from tegridymidi.constants import ALL_CHORDS
+from tegridymidi.constants import Number2patch, Notenum2percussion
 
-################################################################################
+#===============================================================================
 
 Version = '6.7'
 VersionDate = '20201120'
@@ -48,7 +50,7 @@ VersionDate = '20201120'
 _previous_warning = ''  # 5.4
 _previous_times = 0     # 5.4
 
-#------------------------------- Encoding stuff --------------------------
+#===============================================================================
 
 def opus2midi(opus=[], text_encoding='ISO-8859-1'):
     r'''The argument is a list: the first item in the list is the "ticks"
@@ -88,6 +90,7 @@ sys.stdout.buffer.write(my_midi)
     _clean_up_warnings()
     return my_midi
 
+#===============================================================================
 
 def score2opus(score=None, text_encoding='ISO-8859-1'):
     r'''
@@ -164,7 +167,7 @@ Translates a "score" into MIDI, using score2opus() then opus2midi()
 '''
     return opus2midi(score2opus(score, text_encoding), text_encoding)
 
-#--------------------------- Decoding stuff ------------------------
+#===============================================================================
 
 def midi2opus(midi=b'', do_not_check_MIDI_signature=False):
     r'''Translates MIDI into a "opus".  For a description of the
@@ -207,6 +210,8 @@ def midi2opus(midi=b'', do_not_check_MIDI_signature=False):
         track_num += 1   # 5.1
     _clean_up_warnings()
     return my_opus
+
+#===============================================================================
 
 def opus2score(opus=[]):
     r'''For a description of the "opus" and "score" formats,
@@ -259,11 +264,15 @@ see opus2midi() and score2opus().
     _clean_up_warnings()
     return score
 
+#===============================================================================
+
 def midi2score(midi=b'', do_not_check_MIDI_signature=False):
     r'''
 Translates MIDI into a "score", using midi2opus() then opus2score()
 '''
     return opus2score(midi2opus(midi, do_not_check_MIDI_signature))
+
+#===============================================================================
 
 def midi2ms_score(midi=b'', do_not_check_MIDI_signature=False):
     r'''
@@ -273,16 +282,18 @@ then opus2score()
 '''
     return opus2score(to_millisecs(midi2opus(midi, do_not_check_MIDI_signature)))
 
+#===============================================================================
+
 def midi2single_track_ms_score(midi_path_or_bytes, 
                                 recalculate_channels = False, 
                                 pass_old_timings_events= False, 
                                 verbose = False, 
                                 do_not_check_MIDI_signature=False
                                 ):
-    r'''
-Translates MIDI into a single track "score" with 16 instruments and one beat per second and one
-tick per millisecond
-'''
+    '''
+    Translates MIDI into a single track "score" with 16 instruments and one beat per second and one
+    tick per millisecond
+    '''
 
     if type(midi_path_or_bytes) == bytes:
       midi_data = midi_path_or_bytes
@@ -351,7 +362,7 @@ tick per millisecond
 
     return ms_score
 
-#------------------------ Other Transformations ---------------------
+#===============================================================================
 
 def to_millisecs(old_opus=None, desired_time_in_ms=1, pass_old_timings_events = False):
     r'''Recallibrates all the times in an "opus" to use one beat
@@ -431,6 +442,8 @@ but it does make it easy to mix different scores together.
         itrack += 1
     _clean_up_warnings()
     return new_opus
+
+#===============================================================================
 
 def score2stats(opus_or_score=None):
     r'''Returns a dict of some basic stats about the score, like
@@ -560,15 +573,21 @@ _sysex2midimode = {
     "\x7E\x7F\x09\x03\xF7": 2,
 }
 
+#===============================================================================
+
 # Some public-access tuples:
 MIDI_events = tuple('''note_off note_on key_after_touch
 control_change patch_change channel_after_touch
 pitch_wheel_change'''.split())
 
+#===============================================================================
+
 Text_events = tuple('''text_event copyright_text_event
 track_name instrument_name lyric marker cue_point text_event_08
 text_event_09 text_event_0a text_event_0b text_event_0c
 text_event_0d text_event_0e text_event_0f'''.split())
+
+#===============================================================================
 
 Nontext_meta_events = tuple('''end_track set_tempo
 smpte_offset time_signature key_signature sequencer_specific
@@ -576,216 +595,47 @@ raw_meta_event sysex_f0 sysex_f7 song_position song_select
 tune_request'''.split())
 # unsupported: raw_data
 
+#===============================================================================
+
 # Actually, 'tune_request' is is F-series event, not strictly a meta-event...
 Meta_events = Text_events + Nontext_meta_events
 All_events  = MIDI_events + Meta_events
 
-# And three dictionaries:
-Number2patch = {   # General MIDI patch numbers:
-0:'Acoustic Grand',
-1:'Bright Acoustic',
-2:'Electric Grand',
-3:'Honky-Tonk',
-4:'Electric Piano 1',
-5:'Electric Piano 2',
-6:'Harpsichord',
-7:'Clav',
-8:'Celesta',
-9:'Glockenspiel',
-10:'Music Box',
-11:'Vibraphone',
-12:'Marimba',
-13:'Xylophone',
-14:'Tubular Bells',
-15:'Dulcimer',
-16:'Drawbar Organ',
-17:'Percussive Organ',
-18:'Rock Organ',
-19:'Church Organ',
-20:'Reed Organ',
-21:'Accordion',
-22:'Harmonica',
-23:'Tango Accordion',
-24:'Acoustic Guitar(nylon)',
-25:'Acoustic Guitar(steel)',
-26:'Electric Guitar(jazz)',
-27:'Electric Guitar(clean)',
-28:'Electric Guitar(muted)',
-29:'Overdriven Guitar',
-30:'Distortion Guitar',
-31:'Guitar Harmonics',
-32:'Acoustic Bass',
-33:'Electric Bass(finger)',
-34:'Electric Bass(pick)',
-35:'Fretless Bass',
-36:'Slap Bass 1',
-37:'Slap Bass 2',
-38:'Synth Bass 1',
-39:'Synth Bass 2',
-40:'Violin',
-41:'Viola',
-42:'Cello',
-43:'Contrabass',
-44:'Tremolo Strings',
-45:'Pizzicato Strings',
-46:'Orchestral Harp',
-47:'Timpani',
-48:'String Ensemble 1',
-49:'String Ensemble 2',
-50:'SynthStrings 1',
-51:'SynthStrings 2',
-52:'Choir Aahs',
-53:'Voice Oohs',
-54:'Synth Voice',
-55:'Orchestra Hit',
-56:'Trumpet',
-57:'Trombone',
-58:'Tuba',
-59:'Muted Trumpet',
-60:'French Horn',
-61:'Brass Section',
-62:'SynthBrass 1',
-63:'SynthBrass 2',
-64:'Soprano Sax',
-65:'Alto Sax',
-66:'Tenor Sax',
-67:'Baritone Sax',
-68:'Oboe',
-69:'English Horn',
-70:'Bassoon',
-71:'Clarinet',
-72:'Piccolo',
-73:'Flute',
-74:'Recorder',
-75:'Pan Flute',
-76:'Blown Bottle',
-77:'Skakuhachi',
-78:'Whistle',
-79:'Ocarina',
-80:'Lead 1 (square)',
-81:'Lead 2 (sawtooth)',
-82:'Lead 3 (calliope)',
-83:'Lead 4 (chiff)',
-84:'Lead 5 (charang)',
-85:'Lead 6 (voice)',
-86:'Lead 7 (fifths)',
-87:'Lead 8 (bass+lead)',
-88:'Pad 1 (new age)',
-89:'Pad 2 (warm)',
-90:'Pad 3 (polysynth)',
-91:'Pad 4 (choir)',
-92:'Pad 5 (bowed)',
-93:'Pad 6 (metallic)',
-94:'Pad 7 (halo)',
-95:'Pad 8 (sweep)',
-96:'FX 1 (rain)',
-97:'FX 2 (soundtrack)',
-98:'FX 3 (crystal)',
-99:'FX 4 (atmosphere)',
-100:'FX 5 (brightness)',
-101:'FX 6 (goblins)',
-102:'FX 7 (echoes)',
-103:'FX 8 (sci-fi)',
-104:'Sitar',
-105:'Banjo',
-106:'Shamisen',
-107:'Koto',
-108:'Kalimba',
-109:'Bagpipe',
-110:'Fiddle',
-111:'Shanai',
-112:'Tinkle Bell',
-113:'Agogo',
-114:'Steel Drums',
-115:'Woodblock',
-116:'Taiko Drum',
-117:'Melodic Tom',
-118:'Synth Drum',
-119:'Reverse Cymbal',
-120:'Guitar Fret Noise',
-121:'Breath Noise',
-122:'Seashore',
-123:'Bird Tweet',
-124:'Telephone Ring',
-125:'Helicopter',
-126:'Applause',
-127:'Gunshot',
-}
-
-Notenum2percussion = {   # General MIDI Percussion (on Channel 9):
-35:'Acoustic Bass Drum',
-36:'Bass Drum 1',
-37:'Side Stick',
-38:'Acoustic Snare',
-39:'Hand Clap',
-40:'Electric Snare',
-41:'Low Floor Tom',
-42:'Closed Hi-Hat',
-43:'High Floor Tom',
-44:'Pedal Hi-Hat',
-45:'Low Tom',
-46:'Open Hi-Hat',
-47:'Low-Mid Tom',
-48:'Hi-Mid Tom',
-49:'Crash Cymbal 1',
-50:'High Tom',
-51:'Ride Cymbal 1',
-52:'Chinese Cymbal',
-53:'Ride Bell',
-54:'Tambourine',
-55:'Splash Cymbal',
-56:'Cowbell',
-57:'Crash Cymbal 2',
-58:'Vibraslap',
-59:'Ride Cymbal 2',
-60:'Hi Bongo',
-61:'Low Bongo',
-62:'Mute Hi Conga',
-63:'Open Hi Conga',
-64:'Low Conga',
-65:'High Timbale',
-66:'Low Timbale',
-67:'High Agogo',
-68:'Low Agogo',
-69:'Cabasa',
-70:'Maracas',
-71:'Short Whistle',
-72:'Long Whistle',
-73:'Short Guiro',
-74:'Long Guiro',
-75:'Claves',
-76:'Hi Wood Block',
-77:'Low Wood Block',
-78:'Mute Cuica',
-79:'Open Cuica',
-80:'Mute Triangle',
-81:'Open Triangle',
-}
+#===============================================================================
 
 Event2channelindex = { 'note':3, 'note_off':2, 'note_on':2,
  'key_after_touch':2, 'control_change':2, 'patch_change':2,
  'channel_after_touch':2, 'pitch_wheel_change':2
 }
 
-################################################################
+#===============================================================================
 # The code below this line is full of frightening things, all to
 # do with the actual encoding and decoding of binary MIDI data.
+#===============================================================================
 
 def _twobytes2int(byte_a):
     r'''decode a 16 bit quantity from two bytes,'''
     return (byte_a[1] | (byte_a[0] << 8))
 
+#===============================================================================
+
 def _int2twobytes(int_16bit):
     r'''encode a 16 bit quantity into two bytes,'''
     return bytes([(int_16bit>>8) & 0xFF, int_16bit & 0xFF])
+
+#===============================================================================
 
 def _read_14_bit(byte_a):
     r'''decode a 14 bit quantity from two bytes,'''
     return (byte_a[0] | (byte_a[1] << 7))
 
+#===============================================================================
+
 def _write_14_bit(int_14bit):
     r'''encode a 14 bit quantity into two bytes,'''
     return bytes([int_14bit & 0x7F, (int_14bit>>7) & 0x7F])
+
+#===============================================================================
 
 def _ber_compressed_int(integer):
     r'''BER compressed integer (not an ASN.1 BER, see perlpacktut for
@@ -802,6 +652,8 @@ Bit eight (the high bit) is set on each byte except the last.
         ber.insert(0, 0x80|seven_bits)  # XXX surely should convert to a char ?
         integer >>= 7
     return ber
+
+#===============================================================================
 
 def _unshift_ber_int(ba):
     r'''Given a bytearray, returns a tuple of (the ber-integer at the
@@ -822,6 +674,8 @@ start, and the remainder of the bytearray).
         byte = ba.pop(0)
         integer <<= 7
 
+#===============================================================================
+
 def _clean_up_warnings():  # 5.4
     # Call this before returning from any publicly callable function
     # whenever there's a possibility that a warning might have been printed
@@ -838,6 +692,8 @@ def _clean_up_warnings():  # 5.4
     _previous_times = 0
     _previous_warning = ''
 
+#===============================================================================
+
 def _warn(s=''):
     global _previous_times
     global _previous_warning
@@ -848,12 +704,16 @@ def _warn(s=''):
         sys.stderr.write(str(s)+"\n")
         _previous_warning = s
 
+#===============================================================================
+
 def _some_text_event(which_kind=0x01, text=b'some_text', text_encoding='ISO-8859-1'):
     if str(type(text)).find("'str'") >= 0:   # 6.4 test for back-compatibility
         data = bytes(text, encoding=text_encoding)
     else:
         data = bytes(text)
     return b'\xFF'+bytes((which_kind,))+_ber_compressed_int(len(data))+data
+
+#===============================================================================
 
 def _consistentise_ticks(scores):  # 3.6
     # used by mix_scores, merge_scores, concatenate_scores
@@ -878,7 +738,7 @@ def _consistentise_ticks(scores):  # 3.6
     return new_scores
 
 
-###########################################################################
+#===============================================================================
 
 def _decode(trackdata=b'', exclude=None, include=None,
  event_callback=None, exclusive_event_callback=None, no_eot_magic=False):
@@ -1169,8 +1029,8 @@ The options:
 
     return events
 
+#===============================================================================
 
-###########################################################################
 def _encode(events_lol, unknown_callback=None, never_add_eot=False,
   no_eot_magic=False, no_running_status=False, text_encoding='ISO-8859-1'):
     # encode an event structure, presumably for writing to a file
@@ -1384,7 +1244,7 @@ def _encode(events_lol, unknown_callback=None, never_add_eot=False,
 
     return b''.join(data)
 
-################################################################################
+#===============================================================================
 
 def chordify_score(score,
                   return_choridfied_score=True,
@@ -1516,7 +1376,7 @@ def chordify_score(score,
     else:
       return None
 
-################################################################################
+#===============================================================================
 
 def advanced_score_processor(raw_score, 
                               patches_to_analyze=list(range(129)), 
@@ -1757,4 +1617,181 @@ def advanced_score_processor(raw_score,
   else:
     return ['Check score for errors and compatibility!']
 
-################################################################################
+#===============================================================================
+
+def augment_enhanced_score_notes(enhanced_score_notes,
+                                  timings_divider=16,
+                                  full_sorting=True,
+                                  timings_shift=0,
+                                  pitch_shift=0,
+                                  ceil_timings=False,
+                                  round_timings=False,
+                                  legacy_timings=False
+                                ):
+
+    esn = copy.deepcopy(enhanced_score_notes)
+
+    pe = enhanced_score_notes[0]
+
+    abs_time = max(0, int(enhanced_score_notes[0][1] / timings_divider))
+
+    for i, e in enumerate(esn):
+      
+      dtime = (e[1] / timings_divider) - (pe[1] / timings_divider)
+
+      if round_timings:
+        dtime = round(dtime)
+      
+      else:
+        if ceil_timings:
+          dtime = math.ceil(dtime)
+        
+        else:
+          dtime = int(dtime)
+
+      if legacy_timings:
+        abs_time = int(e[1] / timings_divider) + timings_shift
+
+      else:
+        abs_time += dtime
+
+      e[1] = max(0, abs_time + timings_shift)
+
+      if round_timings:
+        e[2] = max(1, round(e[2] / timings_divider)) + timings_shift
+      
+      else:
+        if ceil_timings:
+          e[2] = max(1, math.ceil(e[2] / timings_divider)) + timings_shift
+        else:
+          e[2] = max(1, int(e[2] / timings_divider)) + timings_shift
+      
+      e[4] = max(1, min(127, e[4] + pitch_shift))
+
+      pe = enhanced_score_notes[i]
+
+    if full_sorting:
+
+      # Sorting by patch, reverse pitch and start-time
+      esn.sort(key=lambda x: x[6])
+      esn.sort(key=lambda x: x[4], reverse=True)
+      esn.sort(key=lambda x: x[1])
+
+    return esn
+
+#===============================================================================
+
+def delta_score_notes(score_notes, 
+                      timings_clip_value=255, 
+                      even_timings=False,
+                      compress_timings=False
+                      ):
+
+  delta_score = []
+
+  pe = score_notes[0]
+
+  for n in score_notes:
+
+    note = copy.deepcopy(n)
+
+    time =  n[1] - pe[1]
+    dur = n[2]
+
+    if even_timings:
+      if time != 0 and time % 2 != 0:
+        time += 1
+      if dur % 2 != 0:
+        dur += 1
+
+    time = max(0, min(timings_clip_value, time))
+    dur = max(0, min(timings_clip_value, dur))
+
+    if compress_timings:
+      time /= 2
+      dur /= 2
+
+    note[1] = int(time)
+    note[2] = int(dur)
+
+    delta_score.append(note)
+
+    pe = n
+
+  return delta_score
+
+#===============================================================================
+
+def recalculate_score_timings(score, 
+                              start_time=0, 
+                              timings_index=1
+                              ):
+
+  rscore = copy.deepcopy(score)
+
+  pe = rscore[0]
+
+  abs_time = start_time
+
+  for e in rscore:
+
+    dtime = e[timings_index] - pe[timings_index]
+    pe = copy.deepcopy(e)
+    abs_time += dtime
+    e[timings_index] = abs_time
+    
+  return rscore
+
+#===============================================================================
+
+def enhanced_delta_score_notes(enhanced_score_notes,
+                               start_time=0,
+                               max_score_time=255
+                               ):
+
+  delta_score = []
+
+  pe = ['note', max(0, enhanced_score_notes[0][1]-start_time)]
+
+  for e in enhanced_score_notes:
+
+    dtime = max(0, min(max_score_time, e[1]-pe[1]))
+    dur = max(1, min(max_score_time, e[2]))
+    cha = max(0, min(15, e[3]))
+    ptc = max(1, min(127, e[4]))
+    vel = max(1, min(127, e[5]))
+    pat = max(0, min(128, e[6]))
+
+    delta_score.append([dtime, dur, cha, ptc, vel, pat])
+
+    pe = e
+
+  return delta_score
+
+#===============================================================================
+
+def delta_score_to_abs_score(delta_score_notes, 
+                            times_idx=1
+                            ):
+
+  abs_score = copy.deepcopy(delta_score_notes)
+
+  abs_time = 0
+
+  for i, e in enumerate(delta_score_notes):
+
+    dtime = e[times_idx]
+    
+    abs_time += dtime
+
+    abs_score[i][times_idx] = abs_time
+    
+  return abs_score
+
+#===============================================================================
+
+__all__ = [name for name in globals() if not name.startswith('_')]
+          
+#=======================================================================================================
+# This is the end of processors module
+#=======================================================================================================

@@ -2,7 +2,7 @@
 # Tegridy MIDI Plots module
 #=======================================================================================================
 
-from tegridymidi.helpers import *
+from tegridymidi.helpers import generate_colors, add_arrays
 
 import matplotlib.pyplot as plt
 
