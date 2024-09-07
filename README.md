@@ -19,12 +19,14 @@
 ### CPU
 
 ```sh
+sudo apt-get install fluidsynth
 pip install tegridymidi
 ```
 
 ### GPU
 
 ```sh
+sudo apt-get install fluidsynth
 pip install tegridymidi[cuda]
 ```
 
