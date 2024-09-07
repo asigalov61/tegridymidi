@@ -8,6 +8,11 @@ import copy
 from collections import Counter
 from itertools import product, groupby
 
+import numpy as np
+
+from sklearn import metrics
+from sklearn.preprocessing import MinMaxScaler
+
 #=======================================================================================================
 
 def hsv_to_rgb(h, s, v):
@@ -438,6 +443,91 @@ def find_pattern_start_indexes(values, pattern):
 
 def all_consequtive(list_of_values):
   return all(b > a for a, b in zip(list_of_values[:-1], list_of_values[1:]))
+
+#===============================================================================
+
+def calculate_similarities(lists_of_values, metric='cosine'):
+  return metrics.pairwise_distances(lists_of_values, metric=metric).tolist()
+
+#===============================================================================
+
+def get_tokens_embeddings(x_transformer_model):
+  return x_transformer_model.net.token_emb.emb.weight.detach().cpu().tolist()
+
+#===============================================================================
+
+def minkowski_distance_matrix(X, p=3):
+
+  X = np.array(X)
+
+  n = X.shape[0]
+  dist_matrix = np.zeros((n, n))
+
+  for i in range(n):
+      for j in range(n):
+          dist_matrix[i, j] = np.sum(np.abs(X[i] - X[j])**p)**(1/p)
+
+  return dist_matrix.tolist()
+
+#===============================================================================
+
+def robust_normalize(values):
+
+  values = np.array(values)
+  q1 = np.percentile(values, 25)
+  q3 = np.percentile(values, 75)
+  iqr = q3 - q1
+
+  filtered_values = values[(values >= q1 - 1.5 * iqr) & (values <= q3 + 1.5 * iqr)]
+
+  min_val = np.min(filtered_values)
+  max_val = np.max(filtered_values)
+  normalized_values = (values - min_val) / (max_val - min_val)
+
+  normalized_values = np.clip(normalized_values, 0, 1)
+
+  return normalized_values.tolist()
+
+#===============================================================================
+
+def min_max_normalize(values):
+
+  scaler = MinMaxScaler()
+
+  return scaler.fit_transform(values).tolist()
+
+#===============================================================================
+
+def normalize_to_range(values, n):
+    
+  min_val = min(values)
+  max_val = max(values)
+  
+  range_val = max_val - min_val
+  
+  normalized_values = [((value - min_val) / range_val * 2 * n) - n for value in values]
+  
+  return normalized_values
+
+#===============================================================================
+
+def filter_and_replace_values(list_of_values, 
+                              threshold, 
+                              replace_value, 
+                              replace_above_threshold=False
+                              ):
+
+  array = np.array(list_of_values)
+
+  modified_array = np.copy(array)
+  
+  if replace_above_threshold:
+    modified_array[modified_array > threshold] = replace_value
+  
+  else:
+    modified_array[modified_array < threshold] = replace_value
+  
+  return modified_array.tolist()
 
 #===============================================================================
 

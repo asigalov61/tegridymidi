@@ -2,9 +2,16 @@
 # Matrixes module
 #=======================================================================================================
 
+import os
 from collections import Counter
+from PIL import Image
 
 from tegridymidi.helpers import find_value_power
+
+import numpy as np
+
+from scipy.ndimage import zoom
+from sklearn.decomposition import PCA
 
 #===============================================================================
 
@@ -686,6 +693,302 @@ def image_matrix_to_original_escore_notes(image_matrix,
   adjust_score_velocities(output_score, 127)
 
   return output_score
+
+#===============================================================================
+
+def square_binary_matrix(binary_matrix, 
+                         matrix_size=128,
+                         interpolation_order=5,
+                         return_square_matrix_points=False
+                         ):
+
+  """
+  Reduces an arbitrary binary matrix to a square binary matrix
+  """
+
+  zoom_factors = (matrix_size / len(binary_matrix), 1)
+
+  resized_matrix = zoom(binary_matrix, zoom_factors, order=interpolation_order)
+
+  resized_matrix = (resized_matrix > 0.5).astype(int)
+
+  final_matrix = np.zeros((matrix_size, matrix_size), dtype=int)
+  final_matrix[:, :resized_matrix.shape[1]] = resized_matrix
+
+  points = np.column_stack(np.where(final_matrix == 1)).tolist()
+
+  if return_square_matrix_points:
+    return points
+
+  else:
+    return resized_matrix
+
+#===============================================================================
+
+def binary_matrix_to_images(matrix, 
+                            step,
+                            overlap,
+                            output_folder='./Dataset/', 
+                            output_img_prefix='image', 
+                            output_img_ext='.png',
+                            save_to_array=False,
+                            verbose=True
+                            ):
+
+    if not save_to_array:
+
+      if verbose:
+        print('=' * 70)
+        print('Checking output folder dir...')
+
+      os.makedirs(os.path.dirname(output_folder), exist_ok=True)
+
+      if verbose:
+        print('Done!')
+
+    if verbose:
+      print('=' * 70)
+      print('Writing images...')
+
+    matrix = np.array(matrix, dtype=np.uint8)
+    
+    image_array = []
+    
+    for i in range(0, max(1, matrix.shape[0]), overlap):
+       
+        submatrix = matrix[i:i+step, :]
+
+        if submatrix.shape[0] < 128:
+          zeros_array = np.zeros((128-submatrix.shape[0], 128))
+          submatrix = np.vstack((submatrix, zeros_array))
+
+        img = Image.fromarray(submatrix * 255).convert('1')
+        
+        if save_to_array:
+          image_array.append(np.array(img))
+
+        else:
+          img.save(output_folder + output_img_prefix + '_' + str(matrix.shape[1]) + '_' + str(i).zfill(7) + output_img_ext)
+  
+    if verbose:
+      print('Done!')
+      print('=' * 70)
+      print('Saved', (matrix.shape[0] // min(step, overlap))+1, 'imges!')
+      print('=' * 70)
+
+    if save_to_array:
+        return np.array(image_array).tolist()
+
+#===============================================================================
+
+def images_to_binary_matrix(list_of_images):
+
+    image_array = np.array(list_of_images)
+   
+    original_matrix = []
+    
+    for img in image_array:
+
+        submatrix = np.array(img)
+        original_matrix.extend(submatrix.tolist())
+    
+    return original_matrix
+
+#===============================================================================
+
+def square_image_matrix(image_matrix,
+                        matrix_size=128,
+                        num_pca_components=5,
+                        filter_out_zero_rows=False,
+                        return_square_matrix_points=False
+                        ):
+
+  """
+  Reduces an arbitrary image matrix to a square image matrix
+  """
+
+  matrix = np.array(image_matrix)
+
+  if filter_out_zero_rows:
+    matrix = matrix[~np.all(matrix == 0, axis=1)]
+
+  target_rows = matrix_size
+
+  rows_per_group = matrix.shape[0] // target_rows
+
+  compressed_matrix = np.zeros((target_rows, matrix.shape[1]), dtype=np.int32)
+
+  for i in range(target_rows):
+      start_row = i * rows_per_group
+      end_row = (i + 1) * rows_per_group
+      group = matrix[start_row:end_row, :]
+      
+      pca = PCA(n_components=num_pca_components)
+      pca.fit(group)
+      
+      principal_component = np.mean(pca.components_, axis=0)
+      contributions = np.dot(group, principal_component)
+      selected_row_index = np.argmax(contributions)
+      
+      compressed_matrix[i, :] = group[selected_row_index, :]
+
+  if return_square_matrix_points:
+    filtered_matrix = compressed_matrix[~np.all(compressed_matrix == 0, axis=1)]
+
+    row_indexes, col_indexes = np.where(filtered_matrix != 0)
+    points = np.column_stack((row_indexes, filtered_matrix[row_indexes, col_indexes])).tolist()
+
+    return points
+
+  else:
+    return compressed_matrix.tolist()
+
+#===============================================================================
+
+def image_matrix_to_images(image_matrix,
+                           step,
+                           overlap,
+                           num_img_channels=3,
+                           output_folder='./Dataset/',
+                           output_img_prefix='image',
+                           output_img_ext='.png',
+                           save_to_array=False,
+                           verbose=True
+                           ):
+
+    if num_img_channels > 1:
+      n_mat_channels = 3
+
+    else:
+      n_mat_channels = 1
+
+    if not save_to_array:
+
+      if verbose:
+        print('=' * 70)
+        print('Checking output folder dir...')
+
+      os.makedirs(os.path.dirname(output_folder), exist_ok=True)
+
+      if verbose:
+        print('Done!')
+
+    if verbose:
+      print('=' * 70)
+      print('Writing images...')
+
+    matrix = np.array(image_matrix)
+
+    image_array = []
+
+    for i in range(0, max(1, matrix.shape[0]), overlap):
+
+        submatrix = matrix[i:i+step, :]
+
+        if submatrix.shape[0] < 128:
+          zeros_array = np.zeros((128-submatrix.shape[0], 128))
+          submatrix = np.vstack((submatrix, zeros_array))
+
+        if n_mat_channels == 3:
+
+          r = (submatrix // (256*256)) % 256
+          g = (submatrix // 256) % 256
+          b = submatrix % 256
+
+          rgb_image = np.stack((r, g, b), axis=-1).astype(np.uint8)
+          img = Image.fromarray(rgb_image, 'RGB')
+
+        else:
+          grayscale_image = submatrix.astype(np.uint8)
+          img = Image.fromarray(grayscale_image, 'L')
+
+        if save_to_array:
+          image_array.append(np.array(img))
+
+        else:
+          img.save(output_folder + output_img_prefix + '_' + str(matrix.shape[1]) + '_' + str(i).zfill(7) + output_img_ext)
+
+    if verbose:
+      print('Done!')
+      print('=' * 70)
+      print('Saved', (matrix.shape[0] // min(step, overlap))+1, 'imges!')
+      print('=' * 70)
+
+    if save_to_array:
+        return np.array(image_array).tolist()
+
+#===============================================================================
+
+def images_to_image_matrix(list_of_images,
+                           num_img_channels=3
+                           ):
+
+    if num_img_channels > 1:
+      n_mat_channels = 3
+
+    else:
+      n_mat_channels = 1
+
+    image_array = np.array(list_of_images)
+
+    original_matrix = []
+
+    for img in image_array:
+
+      if num_img_channels == 3:
+
+        rgb_array = np.array(img)
+
+        matrix = (rgb_array[..., 0].astype(np.int64) * 256*256 +
+                  rgb_array[..., 1].astype(np.int64) * 256 +
+                  rgb_array[..., 2].astype(np.int64))
+
+      else:
+        matrix = np.array(img)
+
+      original_matrix.extend(matrix)
+
+    return original_matrix
+
+#===============================================================================
+
+def square_matrix_to_RGB_matrix(square_matrix):
+
+  smatrix = np.array(square_matrix)
+  sq_matrix = smatrix[:smatrix.shape[1]]
+
+  r = (sq_matrix // (256 ** 2)) % 256
+  g = (sq_matrix // 256) % 256
+  b = sq_matrix % 256
+
+  rgb_array = np.stack((r, g, b), axis=-1)
+
+  return rgb_array.tolist()
+
+#===============================================================================
+
+def upsample_square_matrix(square_matrix, upsampling_factor=4):
+
+  smatrix = np.array(square_matrix)
+  sq_matrix = smatrix[:smatrix.shape[1]]
+
+  scaling_array = np.ones((upsampling_factor, upsampling_factor))
+  scaled_array = np.kron(sq_matrix, scaling_array)
+  scaled_array = scaled_array.astype('int')
+
+  return scaled_array.tolist()
+
+#===============================================================================
+
+def downsample_square_matrix(square_matrix, downsampling_factor=4):
+
+  smatrix = np.array(square_matrix)
+  sq_matrix = smatrix[:smatrix.shape[1]]
+
+  dmatrix = sq_matrix[::downsampling_factor, ::downsampling_factor]
+  dmatrix = dmatrix.astype('int')
+
+  return dmatrix.tolist()
 
 #===============================================================================
 
