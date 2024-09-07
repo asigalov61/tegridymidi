@@ -14,6 +14,7 @@ maintainers = [
 ]
 dependencies = [
     "tqdm",
+    'pillow',
     "numpy",
     "matplotlib",
     "scipy",
