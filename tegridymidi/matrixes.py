@@ -5,7 +5,23 @@
 from collections import Counter
 
 from tegridymidi.helpers import find_value_power
-from tegridymidi.misc import adjust_score_velocities
+
+#===============================================================================
+
+def adjust_score_velocities(score, max_velocity):
+
+    min_velocity = min([c[5] for c in score])
+    max_velocity_all_channels = max([c[5] for c in score])
+    min_velocity_ratio = min_velocity / max_velocity_all_channels
+
+    max_channel_velocity = max([c[5] for c in score])
+    
+    if max_channel_velocity < min_velocity:
+        factor = max_velocity / min_velocity
+    else:
+        factor = max_velocity / max_channel_velocity
+    for i in range(len(score)):
+        score[i][5] = int(score[i][5] * factor)
 
 #===============================================================================
 
