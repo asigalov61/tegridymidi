@@ -598,25 +598,25 @@ def plot_parsons_code(parsons_code,
 
 #===============================================================================
 
-def plot_ms_SONG(ms_song,
-                  preview_length_in_notes=0,
-                  block_lines_times_list = None,
-                  plot_title='ms Song',
-                  max_num_colors=129, 
-                  drums_color_num=128, 
-                  plot_size=(11,4), 
-                  note_height = 0.75,
-                  show_grid_lines=False,
-                  return_plt = False,
-                  timings_multiplier=1,
-                  save_plt='',
-                  save_only_plt_image=True,
-                  save_transparent=False
-                  ):
+def plot_ms_escore_notes(ms_escore_notes,
+                          preview_length_in_notes=0,
+                          block_lines_times_list = None,
+                          plot_title='ms Song',
+                          max_num_colors=129, 
+                          drums_color_num=128, 
+                          plot_size=(11,4), 
+                          note_height = 0.75,
+                          show_grid_lines=False,
+                          return_plt = False,
+                          timings_multiplier=1,
+                          save_plt='',
+                          save_only_plt_image=True,
+                          save_transparent=False
+                          ):
 
-  '''Tegridy ms SONG plotter/vizualizer'''
+  '''Tegridy ms escore notes plotter/vizualizer'''
 
-  notes = [s for s in ms_song if s[0] == 'note']
+  notes = [s for s in ms_escore_notes if s[0] == 'note']
 
   if (len(max(notes, key=len)) != 7) and (len(min(notes, key=len)) != 7):
     print('The song notes do not have patches information')
