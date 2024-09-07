@@ -30,7 +30,7 @@ pip install tegridymidi[cuda]
 
 ***
 
-# Detailed core modules documentation
+# Detailed modules documentation
 
 ## [tegridymidi docs](https://github.com/asigalov61/tegridymidi/tree/main/docs)
 
