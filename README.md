@@ -29,7 +29,7 @@ pip install tegridymidi[cuda]
 ## All modules functions
 
 ```sh
-# This will import all modules functions except midi_to_colab_audio module and legacy modules
+# This will import all modules (functions) except midi_to_colab_audio module and legacy modules
 from tegridymidi import *
 ```
 
