@@ -6,8 +6,8 @@
 # CPU Imports
 #=======================================================================================================
 
-from bits_and_ints import *
-from chords import *
+from .bits_and_ints import *
+from .chords import *
 from .constants import *
 from .files_helpers import *
 from .haystack_search import *
