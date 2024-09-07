@@ -15,7 +15,6 @@ from .helpers import *
 from .karaoke import *
 from .matrixes import *
 from .melodies import *
-from .midi_to_colab_audio import *
 from .misc import *
 from .plots import *
 from .processors import *
