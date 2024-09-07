@@ -18,8 +18,9 @@ setup(
     author_email="alexlev61@proton.me",
     url="https://github.com/asigalov61/tegridymidi",  # Add the URL of your project
     project_urls={
-        "Bug Tracker": "https://github.com/asigalov61/tegridymidi/issues",
+        "Issues": "https://github.com/asigalov61/tegridymidi/issues",
         "Documentation": "https://github.com/asigalov61/tegridymidi/docs",
+        "Discussions": "https://github.com/asigalov61/tegridymidi/discussions"
         "Source Code": "https://github.com/asigalov61/tegridymidi",
     },
     packages=find_packages(),  # Automatically find and include all packages
