@@ -4,7 +4,7 @@
 
 ## MIDI Input
 
-```sh
+```
 from tegridymidi import processors, chords, melodies
 from tegridymidi import sample_midis_helpers
 
@@ -41,7 +41,7 @@ melody = melodies.fix_monophonic_score_durations(melodies.extract_melody(cscore,
 
 ## MIDI Output
 
-```sh
+```
 import copy
 from IPython.display import display, Audio
 
