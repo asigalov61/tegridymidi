@@ -2,7 +2,7 @@
 
 ***
 
-## [Main documentation index page](https://github.com/asigalov61/tegridymidi/blob/main/docs/index.html)
+## [Main documentation index page](https://github.com/asigalov61/tegridymidi/raw/main/docs/index.html)
 
 ***
 
