@@ -56,9 +56,3 @@ Documentation = "https://github.com/asigalov61/tegridymidi/docs"
 Repository = "https://github.com/asigalov61/tegridymidi"
 Issues = "https://github.com/asigalov61/tegridymidi/issues"
 Discussions = "https://github.com/asigalov61/tegridymidi/discussions"
-
-[tool.setuptools]
-include = [
-    "docs/*",
-    "sample_midis/*"
-]
