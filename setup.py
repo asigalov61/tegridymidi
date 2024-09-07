@@ -19,7 +19,7 @@ setup(
     url="https://github.com/asigalov61/tegridymidi",  # Add the URL of your project
     project_urls={
         "Bug Tracker": "https://github.com/asigalov61/tegridymidi/issues",
-        "Documentation": "https://github.com/asigalov61/tegridymidi/wiki",
+        "Documentation": "https://github.com/asigalov61/tegridymidi/docs",
         "Source Code": "https://github.com/asigalov61/tegridymidi",
     },
     packages=find_packages(),  # Automatically find and include all packages
