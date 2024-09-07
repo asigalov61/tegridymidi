@@ -29,6 +29,7 @@ setup(
     },
     install_requires=[
         'tqdm',
+        'pillow',
         'numpy',
         'matplotlib',
         'scipy',
