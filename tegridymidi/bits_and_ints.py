@@ -81,7 +81,41 @@ def int_to_pitches_chord(integer, chord_base_pitch=60):
     else:
       return -1 # Bad integer code
 
-#=======================================================================================================
+#===============================================================================
+
+def tones_chords_to_bits(tones_chords):
+
+  bits_tones_chords = []
+
+  for c in tones_chords:
+
+    c.sort()
+
+    bits = tones_chord_to_bits(c)
+
+    bits_tones_chords.append(bits)
+
+  return bits_tones_chords
+
+#===============================================================================
+
+def tones_chords_to_ints(tones_chords):
+
+  ints_tones_chords = []
+
+  for c in tones_chords:
+
+    c.sort()
+
+    bits = tones_chord_to_bits(c)
+
+    number = bits_to_int(bits)
+
+    ints_tones_chords.append(number)
+
+  return ints_tones_chords
+
+#===============================================================================
 
 __all__ = [name for name in globals() if not name.startswith('_')]
           

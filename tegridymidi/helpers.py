@@ -4,6 +4,7 @@
 
 import os
 import math
+import copy
 from collections import Counter
 from itertools import product, groupby
 
@@ -278,6 +279,165 @@ def ordered_lists_match_ratio(src_list, trg_list):
 
 def lists_intersections(src_list, trg_list):
   return list(set(src_list) & set(trg_list))
+
+#===============================================================================
+
+def lists_sym_differences(src_list, trg_list):
+  return list(set(src_list) ^ set(trg_list))
+
+#===============================================================================
+
+def lists_differences(long_list, short_list):
+  return list(set(long_list) - set(short_list))
+
+#===============================================================================
+
+def adjust_list_of_values_to_target_average(list_of_values, 
+                                            trg_avg, 
+                                            min_value, 
+                                            max_value
+                                            ):
+
+    filtered_values = [value for value in list_of_values if min_value <= value <= max_value]
+
+    if not filtered_values:
+        return list_of_values
+
+    current_avg = sum(filtered_values) / len(filtered_values)
+    scale_factor = trg_avg / current_avg
+
+    adjusted_values = [value * scale_factor for value in filtered_values]
+
+    total_difference = trg_avg * len(filtered_values) - sum(adjusted_values)
+    adjustment_per_value = total_difference / len(filtered_values)
+
+    final_values = [value + adjustment_per_value for value in adjusted_values]
+
+    while abs(sum(final_values) / len(final_values) - trg_avg) > 1e-6:
+        total_difference = trg_avg * len(final_values) - sum(final_values)
+        adjustment_per_value = total_difference / len(final_values)
+        final_values = [value + adjustment_per_value for value in final_values]
+
+    final_values = [round(value) for value in final_values]
+
+    adjusted_values = copy.deepcopy(list_of_values)
+
+    j = 0
+
+    for i in range(len(adjusted_values)):
+        if min_value <= adjusted_values[i] <= max_value:
+            adjusted_values[i] = final_values[j]
+            j += 1
+
+    return adjusted_values
+
+#===============================================================================
+
+def minkowski_distance(x, y, p=3, pad_value=float('inf')):
+
+    if len(x) != len(y):
+      return -1
+    
+    distance = 0
+    
+    for i in range(len(x)):
+
+        if x[i] == pad_value or y[i] == pad_value:
+          continue
+
+        distance += abs(x[i] - y[i]) ** p
+
+    return distance ** (1 / p)
+
+#===============================================================================
+
+def dot_product(x, y, pad_value=None):
+    return sum(xi * yi for xi, yi in zip(x, y) if xi != pad_value and yi != pad_value)
+
+#===============================================================================
+
+def norm(vector, pad_value=None):
+    return sum(xi ** 2 for xi in vector if xi != pad_value) ** 0.5
+
+#===============================================================================
+
+def cosine_similarity(x, y, pad_value=None):
+    if len(x) != len(y):
+        return -1
+    
+    dot_prod = dot_product(x, y, pad_value)
+    norm_x = norm(x, pad_value)
+    norm_y = norm(y, pad_value)
+    
+    if norm_x == 0 or norm_y == 0:
+        return 0.0
+    
+    return dot_prod / (norm_x * norm_y)
+
+#===============================================================================
+
+def hamming_distance(arr1, arr2, pad_value):
+    return sum(el1 != el2 for el1, el2 in zip(arr1, arr2) if el1 != pad_value and el2 != pad_value)
+
+#===============================================================================
+
+def jaccard_similarity(arr1, arr2, pad_value):
+    intersection = sum(el1 and el2 for el1, el2 in zip(arr1, arr2) if el1 != pad_value and el2 != pad_value)
+    union = sum((el1 or el2) for el1, el2 in zip(arr1, arr2) if el1 != pad_value or el2 != pad_value)
+    return intersection / union if union != 0 else 0
+
+#===============================================================================
+
+def pearson_correlation(arr1, arr2, pad_value):
+    filtered_pairs = [(el1, el2) for el1, el2 in zip(arr1, arr2) if el1 != pad_value and el2 != pad_value]
+    if not filtered_pairs:
+        return 0
+    n = len(filtered_pairs)
+    sum1 = sum(el1 for el1, el2 in filtered_pairs)
+    sum2 = sum(el2 for el1, el2 in filtered_pairs)
+    sum1_sq = sum(el1 ** 2 for el1, el2 in filtered_pairs)
+    sum2_sq = sum(el2 ** 2 for el1, el2 in filtered_pairs)
+    p_sum = sum(el1 * el2 for el1, el2 in filtered_pairs)
+    num = p_sum - (sum1 * sum2 / n)
+    den = ((sum1_sq - sum1 ** 2 / n) * (sum2_sq - sum2 ** 2 / n)) ** 0.5
+    if den == 0:
+        return 0
+    return num / den
+
+#===============================================================================
+
+def find_value_power(value, number):
+    return math.floor(math.log(value, number))
+
+#===============================================================================
+
+def proportions_counter(list_of_values):
+
+  counts = Counter(list_of_values).most_common()
+  clen = sum([c[1] for c in counts])
+
+  return [[c[0], c[1], c[1] / clen] for c in counts]
+
+#===============================================================================
+
+def find_pattern_start_indexes(values, pattern):
+
+  start_indexes = []
+
+  count = 0
+
+  for i in range(len(values)- len(pattern)):
+    chunk = values[i:i+len(pattern)]
+
+    if chunk == pattern:
+      start_indexes.append(i)
+
+  return start_indexes
+
+#===============================================================================
+
+def all_consequtive(list_of_values):
+  return all(b > a for a, b in zip(list_of_values[:-1], list_of_values[1:]))
 
 #===============================================================================
 

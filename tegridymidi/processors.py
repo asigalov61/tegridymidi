@@ -39,8 +39,7 @@ r'''############################################################################
 #===============================================================================
 
 import sys, struct, copy, math
-from tegridymidi.constants import ALL_CHORDS
-from tegridymidi.constants import Number2patch, Notenum2percussion
+from tegridymidi.constants import ALL_CHORDS, Number2patch, Notenum2percussion
 
 #===============================================================================
 
@@ -364,20 +363,20 @@ def midi2single_track_ms_score(midi_path_or_bytes,
 
 #===============================================================================
 
-def to_millisecs(old_opus=None, desired_time_in_ms=1, pass_old_timings_events = False):
+def to_millisecs(old_opus=None, pass_old_timings_events = False):
     r'''Recallibrates all the times in an "opus" to use one beat
 per second and one tick per millisecond.  This makes it
 hard to retrieve any information about beats or barlines,
 but it does make it easy to mix different scores together.
 '''
     if old_opus == None:
-        return [1000 * desired_time_in_ms,[],]
+        return [1000,[],]
     try:
         old_tpq  = int(old_opus[0])
     except IndexError:   # 5.0
         _warn('to_millisecs: the opus '+str(type(old_opus))+' has no elements')
-        return [1000 * desired_time_in_ms,[],]
-    new_opus = [1000 * desired_time_in_ms,]
+        return [1000,[],]
+    new_opus = [1000,]
     # 6.7 first go through building a table of set_tempos by absolute-tick
     ticks2tempo = {}
     itrack = 1
@@ -406,23 +405,23 @@ but it does make it easy to mix different scores together.
         previous_ms_so_far = 0.0
 
         if pass_old_timings_events:
-          new_track = [['set_tempo',0,1000000 * desired_time_in_ms],['old_tpq', 0, old_tpq]]  # new "crochet" is 1 sec
+          new_track = [['set_tempo',0,1000000],['old_tpq', 0, old_tpq]]  # new "crochet" is 1 sec
         else:
-          new_track = [['set_tempo',0,1000000 * desired_time_in_ms],]  # new "crochet" is 1 sec
+          new_track = [['set_tempo',0,1000000],]  # new "crochet" is 1 sec
         for old_event in old_opus[itrack]:
             # detect if ticks2tempo has something before this event
             # 20160702 if ticks2tempo is at the same time, leave it
-            event_delta_ticks = old_event[1] * desired_time_in_ms
+            event_delta_ticks = old_event[1]
             if (i_tempo_ticks < len(tempo_ticks) and
-              tempo_ticks[i_tempo_ticks] < (ticks_so_far + old_event[1]) * desired_time_in_ms):
+              tempo_ticks[i_tempo_ticks] < (ticks_so_far + old_event[1])):
                 delta_ticks = tempo_ticks[i_tempo_ticks] - ticks_so_far
-                ms_so_far += (ms_per_old_tick * delta_ticks * desired_time_in_ms)
+                ms_so_far += (ms_per_old_tick * delta_ticks)
                 ticks_so_far = tempo_ticks[i_tempo_ticks]
-                ms_per_old_tick = ticks2tempo[ticks_so_far] / (1000.0*old_tpq * desired_time_in_ms)
+                ms_per_old_tick = ticks2tempo[ticks_so_far] / (1000.0*old_tpq)
                 i_tempo_ticks += 1
                 event_delta_ticks -= delta_ticks
             new_event = copy.deepcopy(old_event)  # now handle the new event
-            ms_so_far += (ms_per_old_tick * old_event[1] * desired_time_in_ms)
+            ms_so_far += (ms_per_old_tick * old_event[1])
             new_event[1] = round(ms_so_far - previous_ms_so_far)
 
             if pass_old_timings_events:

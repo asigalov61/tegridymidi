@@ -6,7 +6,7 @@
 # CPU Imports
 #=======================================================================================================
 
-from .tegridymidi import *
+from .misc import *
 from .helpers import *
 from .processors import *
 from .melodies import *

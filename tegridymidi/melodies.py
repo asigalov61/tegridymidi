@@ -6,7 +6,7 @@ import copy
 from collections import Counter
 
 from tegridymidi.processors import chordify_score
-from tegridymidi.tegridymidi import adjust_score_velocities
+from tegridymidi.misc import adjust_score_velocities
 from tegridymidi.constants import ALL_CHORDS_FULL
 from tegridymidi.helpers import stack_list
 
@@ -317,6 +317,50 @@ def split_melody(enhanced_melody_score_notes,
     mel_chunks.append(chu)
 
   return mel_chunks, [[m[0][1], m[-1][1]] for m in mel_chunks], len(mel_chunks)
+
+#===============================================================================
+
+def harmonize_enhanced_melody_score_notes_to_ms_SONG(escore_notes,
+                                                      melody_velocity=-1,
+                                                      melody_channel=3,
+                                                      melody_patch=40,
+                                                      melody_base_octave=4,
+                                                      harmonized_tones_chords_velocity=-1,
+                                                      harmonized_tones_chords_channel=0,
+                                                      harmonized_tones_chords_patch=0
+                                                    ):
+
+  harmonized_tones_chords = harmonize_enhanced_melody_score_notes(escore_notes)
+
+  harm_escore_notes = []
+
+  time = 0
+
+  for i, note in enumerate(escore_notes):
+
+    time = note[1]
+    dur = note[2]
+    ptc = note[4]
+
+    if melody_velocity == -1:
+      vel = int(110 + ((ptc % 12) * 1.5))
+    else:
+      vel = melody_velocity
+
+    harm_escore_notes.append(['note', time, dur, melody_channel, ptc, vel, melody_patch])
+
+    for t in harmonized_tones_chords[i]:
+
+      ptc = (melody_base_octave * 12) + t
+
+      if harmonized_tones_chords_velocity == -1:
+        vel = int(80 + ((ptc % 12) * 1.5))
+      else:
+        vel = harmonized_tones_chords_velocity
+
+      harm_escore_notes.append(['note', time, dur, harmonized_tones_chords_channel, ptc, vel, harmonized_tones_chords_patch])
+
+  return sorted(harm_escore_notes, key=lambda x: (x[1], -x[4], x[6]))
 
 #===============================================================================
 
