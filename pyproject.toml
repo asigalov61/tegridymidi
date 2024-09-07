@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "tegridymidi"
-version = "24.9.6"
+version = "24.9.7"
 description = "Tools for reading, writing, and manipulating MIDIs"
 authors = [
     {name = "Alex Lev", email = "alexlev61@proton.me"}
