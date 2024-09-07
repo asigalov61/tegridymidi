@@ -18,15 +18,16 @@ setup(
     author_email="alexlev61@proton.me",
     url="https://github.com/asigalov61/tegridymidi",  # Add the URL of your project
     project_urls={
+        "Examples": "https://github.com/asigalov61/tegridymidi/tegridymidi/example",
         "Issues": "https://github.com/asigalov61/tegridymidi/issues",
         "Documentation": "https://github.com/asigalov61/tegridymidi/docs",
-        "Discussions": "https://github.com/asigalov61/tegridymidi/discussions"
+        "Discussions": "https://github.com/asigalov61/tegridymidi/discussions",
         "Source Code": "https://github.com/asigalov61/tegridymidi",
     },
     packages=find_packages(),  # Automatically find and include all packages
     include_package_data=True,
     package_data={
-        'tegridymidi': ['sample_midis/*'],
+        'tegridymidi': ['sample_midis/*', 'examples/*'],
     },
     install_requires=[
         'tqdm',
